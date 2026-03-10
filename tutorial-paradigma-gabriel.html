@@ -1480,7 +1480,7 @@ Requisitos:
 </footer>
 
 <!-- Scroll to Top -->
-<button class="scroll-top" id="scrollTop" onclick="window.scrollTo({top:0,behavior:'smooth'})">&#8593;</button>
+<button class="scroll-top" id="scrollTop" onclick="elevatorRide()">&#8593;</button>
 
 <script>
     // ── Nav Panel Toggle ──
@@ -1598,6 +1598,153 @@ Requisitos:
     }, { threshold: 0.1 });
 
     document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── Elevator Ride: musiquinha + scroll lento ──
+    let elevatorPlaying = false;
+
+    function elevatorRide() {
+        if (elevatorPlaying || window.scrollY === 0) return;
+        elevatorPlaying = true;
+
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const masterGain = ctx.createGain();
+        masterGain.gain.value = 0.18;
+        masterGain.connect(ctx.destination);
+
+        // Bossa nova / elevator jazz melody
+        const bpm = 140;
+        const beat = 60 / bpm;
+
+        // Melody notes (frequency, start beat, duration beats)
+        const melody = [
+            [392.00, 0, 1],    // G4
+            [440.00, 1, 0.5],  // A4
+            [493.88, 1.5, 0.5],// B4
+            [523.25, 2, 1.5],  // C5
+            [493.88, 3.5, 0.5],// B4
+            [440.00, 4, 1],    // A4
+            [392.00, 5, 0.5],  // G4
+            [349.23, 5.5, 0.5],// F4
+            [329.63, 6, 1.5],  // E4
+            [349.23, 7.5, 0.5],// F4
+            [392.00, 8, 1],    // G4
+            [440.00, 9, 0.5],  // A4
+            [493.88, 9.5, 0.5],// B4
+            [523.25, 10, 1],   // C5
+            [587.33, 11, 1],   // D5
+            [523.25, 12, 0.5], // C5
+            [493.88, 12.5, 0.5],// B4
+            [440.00, 13, 1],   // A4
+            [392.00, 14, 1.5], // G4
+            [349.23, 15.5, 0.5],// F4
+            [329.63, 16, 1],   // E4
+            [349.23, 17, 0.5], // F4
+            [392.00, 17.5, 0.5],// G4
+            [440.00, 18, 1.5], // A4
+            [392.00, 19.5, 0.5],// G4
+            [349.23, 20, 1],   // F4
+            [329.63, 21, 0.5], // E4
+            [293.66, 21.5, 0.5],// D4
+            [261.63, 22, 2],   // C4
+        ];
+
+        // Bass line
+        const bass = [
+            [130.81, 0, 2],  // C3
+            [146.83, 2, 2],  // D3
+            [164.81, 4, 2],  // E3
+            [130.81, 6, 2],  // C3
+            [130.81, 8, 2],  // C3
+            [146.83, 10, 2], // D3
+            [164.81, 12, 2], // E3
+            [174.61, 14, 2], // F3
+            [164.81, 16, 2], // E3
+            [146.83, 18, 2], // D3
+            [130.81, 20, 2], // C3
+            [130.81, 22, 2], // C3
+        ];
+
+        function playNote(freq, startBeat, durBeats, type, gainVal) {
+            const osc = ctx.createOscillator();
+            const g = ctx.createGain();
+            osc.type = type;
+            osc.frequency.value = freq;
+            g.gain.value = 0;
+            const t = ctx.currentTime + startBeat * beat;
+            const dur = durBeats * beat;
+            // Soft envelope
+            g.gain.setValueAtTime(0, t);
+            g.gain.linearRampToValueAtTime(gainVal, t + 0.04);
+            g.gain.setValueAtTime(gainVal, t + dur - 0.06);
+            g.gain.linearRampToValueAtTime(0, t + dur);
+            osc.connect(g);
+            g.connect(masterGain);
+            osc.start(t);
+            osc.stop(t + dur);
+        }
+
+        // Play melody with soft sine + triangle layering
+        melody.forEach(([f, s, d]) => {
+            playNote(f, s, d, 'sine', 0.5);
+            playNote(f, s, d, 'triangle', 0.2);
+        });
+
+        // Play bass
+        bass.forEach(([f, s, d]) => {
+            playNote(f, s, d, 'sine', 0.6);
+        });
+
+        // Light hi-hat / shaker rhythm
+        for (let i = 0; i < 48; i++) {
+            const t = ctx.currentTime + i * beat * 0.5;
+            const bufSize = ctx.sampleRate * 0.03;
+            const buf = ctx.createBuffer(1, bufSize, ctx.sampleRate);
+            const data = buf.getChannelData(0);
+            for (let j = 0; j < bufSize; j++) data[j] = (Math.random() * 2 - 1) * (1 - j/bufSize);
+            const src = ctx.createBufferSource();
+            src.buffer = buf;
+            const hg = ctx.createGain();
+            hg.gain.value = (i % 2 === 0) ? 0.08 : 0.04;
+            const hf = ctx.createBiquadFilter();
+            hf.type = 'highpass';
+            hf.frequency.value = 8000;
+            src.connect(hf);
+            hf.connect(hg);
+            hg.connect(masterGain);
+            src.start(t);
+        }
+
+        // Fade out master at the end
+        const totalTime = 24 * beat;
+        masterGain.gain.setValueAtTime(0.18, ctx.currentTime + totalTime - 1);
+        masterGain.gain.linearRampToValueAtTime(0, ctx.currentTime + totalTime);
+
+        // ── Slow scroll up ──
+        const startY = window.scrollY;
+        const duration = Math.min(totalTime * 1000, Math.max(4000, startY * 2.5));
+        const startTime = performance.now();
+
+        function easeInOutCubic(t) {
+            return t < 0.5 ? 4*t*t*t : 1 - Math.pow(-2*t+2, 3)/2;
+        }
+
+        function scrollStep(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeInOutCubic(progress);
+            window.scrollTo(0, startY * (1 - eased));
+
+            if (progress < 1) {
+                requestAnimationFrame(scrollStep);
+            } else {
+                window.scrollTo(0, 0);
+                elevatorPlaying = false;
+                setTimeout(() => ctx.close(), 2000);
+            }
+        }
+
+        requestAnimationFrame(scrollStep);
+    }
 </script>
 
 </body>
