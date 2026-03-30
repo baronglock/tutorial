@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Claude Code BR — Curso Gratuito</title>
+    <title>Método Glock - Tutorial Interativo</title>
     <style>
         :root {
             --bg: #0f0f0f;
@@ -726,11 +726,8 @@
     <div class="nav-mini-dot" data-target="fase2" title="Fase 2"></div>
     <div class="nav-mini-dot" data-target="fase3" title="Fase 3"></div>
     <div class="nav-mini-dot" data-target="apis" title="APIs"></div>
-    <div class="nav-mini-dot" data-target="seguranca" title="Segurança"></div>
-    <div class="nav-mini-dot" data-target="deploy" title="Deploy"></div>
     <div class="nav-mini-dot" data-target="workflow" title="Workflow"></div>
     <div class="nav-mini-dot" data-target="checklist" title="Checklist"></div>
-    <div class="nav-mini-dot" data-target="embreve" title="Em Breve"></div>
 </div>
 
 <!-- Toggle Button -->
@@ -740,14 +737,14 @@
 
 <!-- Full Navigation Panel -->
 <nav class="nav-panel" id="navPanel">
-    <div class="nav-panel-brand">Claude Code BR</div>
+    <div class="nav-panel-brand">Método Glock</div>
     <div class="nav-panel-title">Sumário do Tutorial</div>
 
     <a class="nav-item active" data-target="hero" onclick="navTo('hero')">
         <div class="nav-dot-mini"></div>
         <div>
             <div class="nav-item-label">Início</div>
-            <div class="nav-item-sub">Visão geral do curso</div>
+            <div class="nav-item-sub">Visão geral do método</div>
         </div>
     </a>
 
@@ -765,7 +762,7 @@
         <div class="nav-dot-mini"></div>
         <div>
             <div class="nav-item-label">Infraestrutura</div>
-            <div class="nav-item-sub">Claude Code, Gemini e mais</div>
+            <div class="nav-item-sub">Gemini Free vs. Advanced</div>
         </div>
     </a>
 
@@ -815,24 +812,6 @@
         </div>
     </a>
 
-    <a class="nav-item" data-target="seguranca" onclick="navTo('seguranca')">
-        <div class="nav-dot-mini"></div>
-        <div>
-            <div class="nav-item-label">Segurança</div>
-            <div class="nav-item-sub">Autenticação, HTTPS, LGPD</div>
-        </div>
-    </a>
-
-    <a class="nav-item" data-target="deploy" onclick="navTo('deploy')">
-        <div class="nav-dot-mini"></div>
-        <div>
-            <div class="nav-item-label">Deploy</div>
-            <div class="nav-item-sub">Docker, CI/CD, monitoramento</div>
-        </div>
-    </a>
-
-    <div class="nav-divider"></div>
-
     <a class="nav-item" data-target="workflow" onclick="navTo('workflow')">
         <div class="nav-dot-mini"></div>
         <div>
@@ -848,24 +827,14 @@
             <div class="nav-item-sub">Verificação + Regras de ouro</div>
         </div>
     </a>
-
-    <div class="nav-divider"></div>
-
-    <a class="nav-item" data-target="embreve" onclick="navTo('embreve')">
-        <div class="nav-dot-mini"></div>
-        <div>
-            <div class="nav-item-label">Em Breve</div>
-            <div class="nav-item-sub">Curso completo extensivo</div>
-        </div>
-    </a>
 </nav>
 
 <!-- ═══════════ HERO ═══════════ -->
 <header class="hero" id="hero">
-    <span class="hero-badge">Claude Code BR — Guia Gratuito</span>
-    <h1>Claude Code BR</h1>
-    <div class="hero-subtitle">Construa software profissional com IA</div>
-    <p>O guia gratuito para criar software real usando Claude Code e agentes de IA — do conceito ao deploy.</p>
+    <span class="hero-badge">Tutorial Interativo 2026</span>
+    <h1>Método Glock</h1>
+    <div class="hero-subtitle">Engenharia de Intenção</div>
+    <p>O guia definitivo para criar software profissional usando pesquisa profunda e orquestração de agentes de IA — mesmo sem saber programar.</p>
     <a href="#filosofia" class="hero-cta">Começar o Tutorial &darr;</a>
 </header>
 
@@ -907,54 +876,50 @@
     <div class="container">
         <div class="fade-in">
             <span class="section-label">Passo 0</span>
-            <h2>Infraestrutura: Suas Ferramentas de IA</h2>
-            <p>Antes de começar, você precisa entender as ferramentas. A janela de contexto define o limite do que a IA pode "guardar na cabeça". O Claude Code com assinatura Max é a nossa recomendação principal.</p>
+            <h2>Infraestrutura: Gemini Free vs. Advanced</h2>
+            <p>Antes de começar, você precisa entender a ferramenta. A janela de contexto define o limite do que a IA pode "guardar na cabeça".</p>
 
             <div class="table-wrap">
                 <table>
                     <thead>
                         <tr>
-                            <th>Ferramenta</th>
-                            <th>Plano</th>
-                            <th>Contexto</th>
-                            <th>Destaque</th>
+                            <th>Característica</th>
+                            <th>Gemini Grátis</th>
+                            <th>Gemini Advanced</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background:rgba(0,212,255,.06);">
-                            <td><strong style="color:var(--accent);">Claude Code (Max)</strong></td>
-                            <td style="color:var(--success);font-weight:600;">Assinatura Max</td>
-                            <td style="color:var(--success);font-weight:600;">200K+ tokens (1M com Opus)</td>
-                            <td style="color:var(--success);font-weight:600;">Agente terminal completo, leitura/escrita de arquivos, execução de comandos, raciocínio profundo</td>
-                        </tr>
                         <tr>
-                            <td><strong>Claude Code (Pro)</strong></td>
-                            <td>Assinatura Pro</td>
-                            <td>200K tokens</td>
-                            <td>Mesmo agente, limites de uso menores</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Gemini Advanced</strong></td>
-                            <td>Google One AI Premium</td>
-                            <td>1.000.000+ tokens</td>
-                            <td>Deep Research, integração Google Workspace</td>
-                        </tr>
-                        <tr>
-                            <td><strong>Gemini Grátis</strong></td>
-                            <td>Gratuito</td>
+                            <td><strong>Janela de Contexto</strong></td>
                             <td>32.000 tokens</td>
-                            <td>5 pesquisas/mês, bom para projetos simples</td>
+                            <td style="color:var(--success);font-weight:600;">1.000.000+ tokens</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Capacidade de Docs</strong></td>
+                            <td>~50 páginas</td>
+                            <td style="color:var(--success);font-weight:600;">~1.500 páginas / 30.000+ linhas de código</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Deep Research</strong></td>
+                            <td>5 relatórios/mês</td>
+                            <td style="color:var(--success);font-weight:600;">20 a 200+ relatórios/dia</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Modelos</strong></td>
+                            <td>2.5 Flash</td>
+                            <td style="color:var(--success);font-weight:600;">2.5 Pro / Thinking / 3.0</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Integração Workspace</strong></td>
+                            <td>Nenhuma</td>
+                            <td style="color:var(--success);font-weight:600;">Docs, Drive, Gmail</td>
                         </tr>
                     </tbody>
                 </table>
             </div>
 
-            <div class="tip-box">
-                <strong>Recomendação:</strong> O <strong>Claude Code com assinatura Max</strong> é a ferramenta principal deste guia. Ele opera diretamente no seu terminal, lê e escreve arquivos, executa comandos e mantém contexto do projeto inteiro via <code>CLAUDE.md</code>. Para pesquisa profunda e geração do Documento Mestre, o <strong>Gemini Deep Research</strong> continua sendo uma excelente opção complementar.
-            </div>
-
             <div class="warn-box">
-                <strong>Atenção:</strong> Com ferramentas gratuitas (contexto reduzido, limites de uso), projetos com 20+ páginas de especificações podem perder coerência. Para projetos sérios, invista no Claude Code Max ou Gemini Advanced.
+                <strong>Atenção:</strong> Com a versão grátis (5 pesquisas/mês, contexto reduzido), projetos com 20+ páginas de especificações podem perder coerência. Para projetos sérios, o Advanced é fortemente recomendado.
             </div>
         </div>
     </div>
@@ -983,7 +948,7 @@
                 </div>
                 <div class="timeline-step" data-step="2">
                     <h4>Exploração de Possibilidades</h4>
-                    <p>Ordem direta para a IA explorar TODAS as tecnologias, linguagens e abordagens mais efetivas no mercado atual.</p>
+                    <p>Ordem direta para o Gemini explorar TODAS as tecnologias, linguagens e abordagens mais efetivas no mercado atual.</p>
                 </div>
                 <div class="timeline-step" data-step="3">
                     <h4>Seleção de APIs e Bibliotecas</h4>
@@ -996,7 +961,7 @@
             </div>
 
             <div class="tip-box">
-                <strong>Tempo estimado:</strong> A pesquisa profunda (via Gemini Deep Research ou Claude) leva de 15 a 30 minutos, navegando por 50 a 100 fontes (documentações, repositórios, artigos técnicos) para sintetizar o plano.
+                <strong>Tempo estimado:</strong> O Gemini Deep Research leva de 15 a 30 minutos, navegando por 50 a 100 fontes (documentações, repositórios, artigos técnicos) para sintetizar o plano.
             </div>
 
             <h3>Formato de download: Markdown > PDF</h3>
@@ -1011,7 +976,7 @@
         <div class="fade-in">
             <span class="section-label">Engenharia de Prompt</span>
             <h2>Prompts Prontos para Copiar e Usar</h2>
-            <p>Estes são templates testados para cada etapa do processo. Copie, adapte os trechos entre <code>[colchetes]</code> e cole no Claude Code ou Gemini Deep Research.</p>
+            <p>Estes são templates testados para cada etapa do processo. Copie, adapte os trechos entre <code>[colchetes]</code> e cole no Gemini Deep Research.</p>
 
             <!-- PROMPT 1 -->
             <h3>Prompt 1 &mdash; Pesquisa Profunda (Documento Mestre)</h3>
@@ -1109,9 +1074,9 @@ Regras:
             </div>
 
             <!-- PROMPT 5 -->
-            <h3>Prompt 5 &mdash; Criar Arquivo de Contexto Persistente (CLAUDE.md)</h3>
+            <h3>Prompt 5 &mdash; Criar Arquivo de Contexto Persistente (GEMINI.md)</h3>
             <div class="prompt-box">
-                <pre>Crie um arquivo chamado CLAUDE.md na raiz do projeto com as seguintes informações para manter consistência entre sessões:
+                <pre>Crie um arquivo chamado GEMINI.md na raiz do projeto com as seguintes informações para manter consistência entre sessões:
 
 # Contexto do Projeto: [Nome]
 
@@ -1195,7 +1160,7 @@ Requisitos:
                 </div>
             </div>
 
-            <p>Com o Documento Mestre em mãos, agora você usa o <strong>Claude Code</strong> (ferramenta principal) para transformar o texto em código real. Alternativas como Gemini Code Assist e Windsurf também funcionam.</p>
+            <p>Com o Documento Mestre em mãos, agora você usa um agente de codificação (Claude Code, Gemini Code Assist, etc.) para transformar o texto em código real.</p>
 
             <h3>Fluxo de Trabalho Passo a Passo</h3>
 
@@ -1222,7 +1187,7 @@ Requisitos:
                 </div>
                 <div class="timeline-step" data-step="5">
                     <h4>Arquivo de Contexto Persistente</h4>
-                    <p>Crie um <code>CLAUDE.md</code> na raiz do projeto (use o <strong>Prompt 5</strong>). Isso garante que a IA nunca perca o contexto entre sessões.</p>
+                    <p>Crie um <code>GEMINI.md</code> ou <code>CLAUDE.md</code> na raiz do projeto (use o <strong>Prompt 5</strong>). Isso garante que a IA nunca perca o contexto entre sessões.</p>
                     <span class="tag tag-red">Crítico</span>
                 </div>
             </div>
@@ -1260,7 +1225,7 @@ Requisitos:
                 </div>
             </div>
 
-            <p>Além do Claude Code, existem alternativas visuais como o <strong>Gemini Canvas</strong> e outras ferramentas que podem complementar seu workflow.</p>
+            <p>Se você não tem o Claude Code configurado ou prefere algo mais visual, o <strong>Gemini Canvas</strong> é uma opção poderosa.</p>
 
             <div class="accordion">
                 <div class="accordion-item">
@@ -1303,11 +1268,6 @@ Requisitos:
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background:rgba(0,212,255,.06);">
-                            <td><strong style="color:var(--accent);">Claude Code</strong></td>
-                            <td>Agente terminal completo, raciocínio profundo, leitura/escrita de arquivos, CLAUDE.md persistente</td>
-                            <td>Ferramenta principal — projetos completos do zero ao deploy</td>
-                        </tr>
                         <tr>
                             <td><strong>Gemini Code Assist</strong></td>
                             <td>Contexto de 1M tokens + Google Cloud</td>
@@ -1317,6 +1277,11 @@ Requisitos:
                             <td><strong>Windsurf Editor</strong></td>
                             <td>Agente "Cascade" que antecipa bugs</td>
                             <td>Alta produtividade e "vibe coding"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude Code</strong></td>
+                            <td>Documentação excelente + raciocínio profundo</td>
+                            <td>Refatoração e tarefas complexas</td>
                         </tr>
                         <tr>
                             <td><strong>GitHub Copilot</strong></td>
@@ -1388,192 +1353,7 @@ Requisitos:
             </div>
 
             <div class="tip-box">
-                <strong>Estratégia inteligente:</strong> No prompt de pesquisa profunda, peça para a IA analisar essas opções e decidir a melhor combinação para CADA função do seu software. O relatório deve conter uma matriz de decisão comparando custo, latência e facilidade.
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════ SEGURANÇA ═══════════ -->
-<section id="seguranca">
-    <div class="container">
-        <div class="fade-in">
-            <span class="section-label">Proteção</span>
-            <h2>Segurança: Protegendo Seu Software</h2>
-            <p>Segurança não é opcional. Todo software que vai para produção precisa considerar esses fundamentos desde o início.</p>
-
-            <div class="card-grid">
-                <div class="card">
-                    <span class="card-icon">&#128272;</span>
-                    <h4>Autenticação</h4>
-                    <p>Use <strong>JWT</strong> (JSON Web Tokens) para APIs stateless, <strong>OAuth 2.0</strong> para login social (Google, GitHub), e <strong>bcrypt</strong> para hash de senhas. Nunca armazene senhas em texto puro.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">&#128274;</span>
-                    <h4>HTTPS / SSL</h4>
-                    <p>Todo tráfego deve ser criptografado. Use <strong>Let's Encrypt</strong> para certificados gratuitos. Plataformas como Vercel e Railway já incluem SSL automático.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">&#128736;</span>
-                    <h4>Variáveis de Ambiente (.env)</h4>
-                    <p>Chaves de API, secrets e credenciais vão no <code>.env</code>, NUNCA no código. Adicione <code>.env</code> ao <code>.gitignore</code>. Use <code>.env.example</code> como template.</p>
-                </div>
-            </div>
-
-            <div class="card-grid">
-                <div class="card">
-                    <span class="card-icon">&#9889;</span>
-                    <h4>Rate Limiting</h4>
-                    <p>Limite requisições por IP/usuário para evitar abuso. Use <code>express-rate-limit</code> (Node) ou middlewares equivalentes. Proteja especialmente endpoints de autenticação.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">&#128737;</span>
-                    <h4>Validação de Input</h4>
-                    <p>Sanitize TODA entrada do usuário. Previna <strong>XSS</strong> (Cross-Site Scripting) com escape de HTML, e <strong>SQL Injection</strong> com queries parametrizadas ou ORMs como Prisma/Drizzle.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">&#128220;</span>
-                    <h4>LGPD / Compliance</h4>
-                    <p>Se coleta dados de usuários brasileiros: tenha política de privacidade, permita exclusão de dados, obtenha consentimento explícito. Use cookies apenas com opt-in.</p>
-                </div>
-            </div>
-
-            <div class="tip-box">
-                <strong>Dica para o Claude Code:</strong> Ao iniciar um projeto, peça: <em>"Implemente autenticação JWT com bcrypt, variáveis de ambiente via .env, rate limiting nos endpoints públicos e validação de input com zod/joi."</em> O agente configurará tudo automaticamente.
-            </div>
-
-            <div class="prompt-box">
-                <pre>Analise o projeto atual e implemente as seguintes medidas de segurança:
-
-1. Autenticação JWT com refresh tokens
-2. Hash de senhas com bcrypt (salt rounds: 12)
-3. Middleware de rate limiting (100 req/15min por IP)
-4. Validação de input com Zod em todas as rotas
-5. Sanitização de HTML para prevenir XSS
-6. Queries parametrizadas (nunca concatenar SQL)
-7. Helmet.js para headers de segurança HTTP
-8. CORS configurado apenas para domínios permitidos
-9. Arquivo .env.example com todas as variáveis necessárias
-10. Middleware de logging para auditoria
-
-Explique cada medida implementada.</pre>
-                <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
-            </div>
-
-            <div class="warn-box">
-                <strong>Nunca faça deploy sem:</strong> HTTPS ativo, senhas hasheadas, .env fora do repositório, validação de input em todas as rotas, e rate limiting nos endpoints públicos.
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- ═══════════ DEPLOY ═══════════ -->
-<section id="deploy">
-    <div class="container">
-        <div class="fade-in">
-            <span class="section-label">Produção</span>
-            <h2>Deploy: Do Local para o Mundo</h2>
-            <p>Seu software funciona local. Agora é hora de colocar no ar para usuários reais acessarem.</p>
-
-            <h3>Opções de Deploy</h3>
-            <div class="table-wrap">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Plataforma</th>
-                            <th>Melhor Para</th>
-                            <th>Custo</th>
-                            <th>Dificuldade</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td><strong>Vercel</strong></td>
-                            <td>Frontend, Next.js, sites estáticos</td>
-                            <td><span class="tag tag-green">Grátis (hobby)</span></td>
-                            <td><span class="tag tag-green">Fácil</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>Railway</strong></td>
-                            <td>Backend, bancos de dados, full-stack</td>
-                            <td><span class="tag tag-blue">$5/mês+</span></td>
-                            <td><span class="tag tag-green">Fácil</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>AWS (EC2/ECS)</strong></td>
-                            <td>Projetos de escala, controle total</td>
-                            <td><span class="tag tag-purple">Variável</span></td>
-                            <td><span class="tag tag-red">Avançado</span></td>
-                        </tr>
-                        <tr>
-                            <td><strong>VPS (Hetzner/DigitalOcean)</strong></td>
-                            <td>Controle total, custo previsível</td>
-                            <td><span class="tag tag-blue">$4-20/mês</span></td>
-                            <td><span class="tag tag-purple">Médio</span></td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-
-            <h3>Docker Básico</h3>
-            <p>Docker empacota seu app com todas as dependências, garantindo que funcione igual em qualquer lugar.</p>
-
-            <div class="prompt-box">
-                <pre># Dockerfile básico para Node.js
-FROM node:20-alpine
-WORKDIR /app
-COPY package*.json ./
-RUN npm ci --only=production
-COPY . .
-EXPOSE 3000
-CMD ["node", "dist/index.js"]
-
-# Comandos essenciais:
-# docker build -t meu-app .
-# docker run -p 3000:3000 meu-app</pre>
-                <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
-            </div>
-
-            <h3>CI/CD com GitHub Actions</h3>
-            <p>Automatize testes e deploy a cada push. O código vai para produção automaticamente quando os testes passam.</p>
-
-            <div class="prompt-box">
-                <pre># .github/workflows/deploy.yml
-name: Deploy
-on:
-  push:
-    branches: [main]
-
-jobs:
-  test-and-deploy:
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-node@v4
-        with:
-          node-version: 20
-      - run: npm ci
-      - run: npm test
-      - run: npm run build
-      # Adicione o step de deploy da sua plataforma aqui</pre>
-                <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
-            </div>
-
-            <div class="card-grid">
-                <div class="card">
-                    <span class="card-icon">&#127760;</span>
-                    <h4>Domínio + SSL</h4>
-                    <p>Registre um domínio (Namecheap, Cloudflare). Aponte o DNS para sua plataforma de deploy. SSL é automático na maioria das plataformas modernas.</p>
-                </div>
-                <div class="card">
-                    <span class="card-icon">&#128202;</span>
-                    <h4>Monitoramento</h4>
-                    <p>Use <strong>UptimeRobot</strong> (grátis) para alertas de downtime. <strong>Sentry</strong> para tracking de erros. <strong>Vercel Analytics</strong> ou <strong>Plausible</strong> para métricas de uso.</p>
-                </div>
-            </div>
-
-            <div class="tip-box">
-                <strong>Dica para o Claude Code:</strong> Peça: <em>"Configure Docker com multi-stage build, GitHub Actions para CI/CD com testes e deploy automático no Railway/Vercel, e adicione health check endpoint."</em>
+                <strong>Estratégia inteligente:</strong> No prompt de pesquisa profunda, peça ao Gemini para analisar essas opções e decidir a melhor combinação para CADA função do seu software. O relatório deve conter uma matriz de decisão comparando custo, latência e facilidade.
             </div>
         </div>
     </div>
@@ -1594,7 +1374,7 @@ jobs:
                 </div>
                 <div class="timeline-step" data-step="2">
                     <h4>Pesquisa Profunda (15-30 min)</h4>
-                    <p>Use o <strong>Prompt 1</strong> no Gemini Deep Research ou Claude. Gere o Documento Mestre de 15-25 páginas. Baixe em <code>.md</code>.</p>
+                    <p>Use o <strong>Prompt 1</strong> no Gemini Deep Research. Gere o Documento Mestre de 15-25 páginas. Baixe em <code>.md</code>.</p>
                 </div>
                 <div class="timeline-step" data-step="3">
                     <h4>Refinar o Documento</h4>
@@ -1610,7 +1390,7 @@ jobs:
                 </div>
                 <div class="timeline-step" data-step="6">
                     <h4>Depurar e Iterar</h4>
-                    <p>Use o <strong>Prompt 6</strong> para debug. Use o Canvas ou o agente para corrigir. Mantenha o <code>CLAUDE.md</code> atualizado.</p>
+                    <p>Use o <strong>Prompt 6</strong> para debug. Use o Canvas ou o agente para corrigir. Mantenha o <code>GEMINI.md</code> atualizado.</p>
                 </div>
                 <div class="timeline-step" data-step="7">
                     <h4>Documentar e Apresentar</h4>
@@ -1642,12 +1422,12 @@ jobs:
     <div class="container">
         <div class="fade-in">
             <span class="section-label">Verificação</span>
-            <h2>Checklist Final</h2>
+            <h2>Checklist Final do Método Glock</h2>
             <p>Clique em cada item conforme você conclui. Seu progresso é salvo localmente.</p>
 
             <ul class="checklist" id="checklist-list">
                 <li onclick="toggleCheck(this)" data-key="c1">Defini a ideia do projeto com clareza (problema, público, fluxo)</li>
-                <li onclick="toggleCheck(this)" data-key="c2">Escolhi a ferramenta adequada (Claude Code Max, Gemini Advanced, etc.)</li>
+                <li onclick="toggleCheck(this)" data-key="c2">Escolhi a versão do Gemini adequada (Free ou Advanced)</li>
                 <li onclick="toggleCheck(this)" data-key="c3">Escrevi o prompt de pesquisa profunda com persona + intenção total</li>
                 <li onclick="toggleCheck(this)" data-key="c4">Refinei o plano de pesquisa antes de confirmar</li>
                 <li onclick="toggleCheck(this)" data-key="c5">Gerei o Documento Mestre (15-25 páginas) e baixei em .md</li>
@@ -1655,7 +1435,7 @@ jobs:
                 <li onclick="toggleCheck(this)" data-key="c7">Injetei o contexto no agente de código (Prompt 3)</li>
                 <li onclick="toggleCheck(this)" data-key="c8">Entendi a arquitetura explicada pelo agente antes de codar</li>
                 <li onclick="toggleCheck(this)" data-key="c9">Iniciei a construção assistida (Prompt 4)</li>
-                <li onclick="toggleCheck(this)" data-key="c10">Criei o arquivo de contexto persistente (CLAUDE.md)</li>
+                <li onclick="toggleCheck(this)" data-key="c10">Criei o arquivo de contexto persistente (GEMINI.md / CLAUDE.md)</li>
                 <li onclick="toggleCheck(this)" data-key="c11">Depurei erros usando o Prompt 6 ou Canvas</li>
                 <li onclick="toggleCheck(this)" data-key="c12">Projeto funcional e testado</li>
                 <li onclick="toggleCheck(this)" data-key="c13">Documentação final gerada (HTML/PDF/MkDocs)</li>
@@ -1693,75 +1473,10 @@ jobs:
     </div>
 </section>
 
-<!-- ═══════════ EM BREVE ═══════════ -->
-<section id="embreve" style="padding:5rem 0;background:linear-gradient(180deg, var(--bg) 0%, #050510 30%, #050510 70%, var(--bg) 100%);position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 800px 400px at 50% 50%, rgba(0,212,255,.05) 0%, transparent 100%);pointer-events:none;"></div>
-    <div class="container" style="position:relative;z-index:1;">
-        <div class="fade-in" style="text-align:center;">
-            <span class="section-label" style="border-color:var(--accent2);color:var(--accent2);">Em Breve</span>
-            <h2 style="font-size:clamp(2rem,5vw,3.2rem);margin-bottom:.5rem;">Curso Completo Extensivo</h2>
-            <p style="color:rgba(255,255,255,.4);font-size:1.1rem;max-width:650px;margin:0 auto 2.5rem;">Tudo que este guia cobre — e muito mais — em um curso completo, com projetos práticos e comunidade.</p>
-
-            <!-- Countdown -->
-            <div id="countdown" style="display:flex;justify-content:center;gap:1.5rem;margin-bottom:3rem;flex-wrap:wrap;">
-                <div style="text-align:center;">
-                    <div id="cd-days" style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">00</div>
-                    <div style="font-size:.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:.3rem;">Dias</div>
-                </div>
-                <div style="text-align:center;">
-                    <div id="cd-hours" style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">00</div>
-                    <div style="font-size:.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:.3rem;">Horas</div>
-                </div>
-                <div style="text-align:center;">
-                    <div id="cd-min" style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">00</div>
-                    <div style="font-size:.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:.3rem;">Minutos</div>
-                </div>
-                <div style="text-align:center;">
-                    <div id="cd-sec" style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">00</div>
-                    <div style="font-size:.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:.3rem;">Segundos</div>
-                </div>
-            </div>
-
-            <h3 style="color:#fff;margin-bottom:1.5rem;font-size:1.2rem;">O que o curso completo vai cobrir:</h3>
-
-            <div class="card-grid" style="text-align:left;max-width:750px;margin:0 auto 2.5rem;">
-                <div class="card">
-                    <h4>Fundamentos Sólidos</h4>
-                    <p>Git, terminal, HTTP, REST, bancos de dados — a base que todo dev precisa, explicada com projetos reais.</p>
-                </div>
-                <div class="card">
-                    <h4>Claude Code Avançado</h4>
-                    <p>CLAUDE.md, hooks, multi-repo, agentes headless, integração com CI/CD e automações complexas.</p>
-                </div>
-                <div class="card">
-                    <h4>Full-Stack com IA</h4>
-                    <p>React/Next.js + Node/FastAPI + PostgreSQL — construindo 3 projetos completos do zero ao deploy.</p>
-                </div>
-                <div class="card">
-                    <h4>DevOps e Infraestrutura</h4>
-                    <p>Docker, Kubernetes básico, GitHub Actions, monitoramento, logging e observabilidade.</p>
-                </div>
-                <div class="card">
-                    <h4>Segurança Profissional</h4>
-                    <p>OWASP Top 10, pentest básico, autenticação avançada, criptografia e compliance (LGPD/GDPR).</p>
-                </div>
-                <div class="card">
-                    <h4>Monetização e Lançamento</h4>
-                    <p>Stripe, landing pages, SEO técnico, analytics e estratégias para lançar seu SaaS ou produto.</p>
-                </div>
-            </div>
-
-            <div style="margin-top:2rem;">
-                <p style="color:rgba(255,255,255,.5);font-size:1.05rem;margin-bottom:.8rem;">Siga para não perder o lançamento:</p>
-                <a href="https://instagram.com/claudecodebr" target="_blank" rel="noopener" style="display:inline-block;padding:.8rem 2.2rem;background:var(--gradient);color:#fff;font-weight:700;font-size:.95rem;border-radius:50px;text-decoration:none;letter-spacing:1px;transition:all .3s;box-shadow:0 0 25px rgba(0,212,255,.2);">@claudecodebr no Instagram</a>
-            </div>
-        </div>
-    </div>
-</section>
-
 <!-- Footer -->
 <footer>
-    <p><strong>Claude Code BR</strong> — Curso gratuito &bull; 2026</p>
+    <p>Baseado no <strong>"Método Glock: Engenharia de Intenção e Orquestração de Agentes"</strong></p>
+    <p style="margin-top:.5rem;">Tutorial interativo gerado com IA &bull; 2026</p>
 </footer>
 
 <!-- Scroll to Top -->
@@ -1843,7 +1558,7 @@ jobs:
     });
 
     // ── Active section tracking ──
-    const sections = ['hero','filosofia','infra','fase1','prompts','fase2','fase3','apis','seguranca','deploy','workflow','checklist','embreve'];
+    const sections = ['hero','filosofia','infra','fase1','prompts','fase2','fase3','apis','workflow','checklist'];
 
     window.addEventListener('scroll', () => {
         let current = '';
@@ -1979,25 +1694,6 @@ jobs:
 
         requestAnimationFrame(scrollStep);
     }
-
-    // ── Countdown Timer ──
-    (function startCountdown() {
-        const target = new Date('2026-04-28T00:00:00').getTime();
-        function update() {
-            const now = Date.now();
-            const diff = Math.max(0, target - now);
-            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
-            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
-            const s = Math.floor((diff % (1000 * 60)) / 1000);
-            document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
-            document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
-            document.getElementById('cd-min').textContent = String(m).padStart(2, '0');
-            document.getElementById('cd-sec').textContent = String(s).padStart(2, '0');
-        }
-        update();
-        setInterval(update, 1000);
-    })();
 </script>
 
 </body>
