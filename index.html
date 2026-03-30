@@ -368,9 +368,12 @@
         .card-grid .card { margin-bottom: 0; }
 
         .card-icon {
-            font-size: 2rem;
+            font-size: 1.2rem;
             margin-bottom: .8rem;
             display: block;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
         }
         .card h4 {
             color: #fff;
@@ -890,17 +893,17 @@
 
             <div class="card-grid">
                 <div class="card">
-                    <span class="card-icon">&#129504;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Lógica da Solução</h4>
                     <p>Você sabe o fluxo: dado A entra, transformação X acontece, resultado B sai. Isso é o que importa.</p>
                 </div>
                 <div class="card">
-                    <span class="card-icon">&#9881;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Implementação Técnica</h4>
                     <p>Qual biblioteca usar? Qual API chamar? Qual sintaxe? A IA resolve isso com pesquisa profunda.</p>
                 </div>
                 <div class="card">
-                    <span class="card-icon">&#127919;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Resultado</h4>
                     <p>Você se torna um <strong>Arquiteto de Intenções</strong>: descreve o projeto com precisão cirúrgica e a IA constrói.</p>
                 </div>
@@ -1415,17 +1418,17 @@ Requisitos:
 
             <div class="card-grid">
                 <div class="card">
-                    <span class="card-icon">&#128272;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Autenticação</h4>
                     <p>Use <strong>JWT</strong> (JSON Web Tokens) para APIs stateless, <strong>OAuth 2.0</strong> para login social (Google, GitHub), e <strong>bcrypt</strong> para hash de senhas. Nunca armazene senhas em texto puro.</p>
                 </div>
                 <div class="card">
-                    <span class="card-icon">&#128274;</span>
+                    <span class="card-icon">❯</span>
                     <h4>HTTPS / SSL</h4>
                     <p>Todo tráfego deve ser criptografado. Use <strong>Let's Encrypt</strong> para certificados gratuitos. Plataformas como Vercel e Railway já incluem SSL automático.</p>
                 </div>
                 <div class="card">
-                    <span class="card-icon">&#128736;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Variáveis de Ambiente (.env)</h4>
                     <p>Chaves de API, secrets e credenciais vão no <code>.env</code>, NUNCA no código. Adicione <code>.env</code> ao <code>.gitignore</code>. Use <code>.env.example</code> como template.</p>
                 </div>
@@ -1433,17 +1436,17 @@ Requisitos:
 
             <div class="card-grid">
                 <div class="card">
-                    <span class="card-icon">&#9889;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Rate Limiting</h4>
                     <p>Limite requisições por IP/usuário para evitar abuso. Use <code>express-rate-limit</code> (Node) ou middlewares equivalentes. Proteja especialmente endpoints de autenticação.</p>
                 </div>
                 <div class="card">
-                    <span class="card-icon">&#128737;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Validação de Input</h4>
                     <p>Sanitize TODA entrada do usuário. Previna <strong>XSS</strong> (Cross-Site Scripting) com escape de HTML, e <strong>SQL Injection</strong> com queries parametrizadas ou ORMs como Prisma/Drizzle.</p>
                 </div>
                 <div class="card">
-                    <span class="card-icon">&#128220;</span>
+                    <span class="card-icon">❯</span>
                     <h4>LGPD / Compliance</h4>
                     <p>Se coleta dados de usuários brasileiros: tenha política de privacidade, permita exclusão de dados, obtenha consentimento explícito. Use cookies apenas com opt-in.</p>
                 </div>
@@ -1572,12 +1575,12 @@ jobs:
 
             <div class="card-grid">
                 <div class="card">
-                    <span class="card-icon">&#127760;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Domínio + SSL</h4>
                     <p>Registre um domínio (Namecheap, Cloudflare). Aponte o DNS para sua plataforma de deploy. SSL é automático na maioria das plataformas modernas.</p>
                 </div>
                 <div class="card">
-                    <span class="card-icon">&#128202;</span>
+                    <span class="card-icon">❯</span>
                     <h4>Monitoramento</h4>
                     <p>Use <strong>UptimeRobot</strong> (grátis) para alertas de downtime. <strong>Sentry</strong> para tracking de erros. <strong>Vercel Analytics</strong> ou <strong>Plausible</strong> para métricas de uso.</p>
                 </div>
