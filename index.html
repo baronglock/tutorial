@@ -6,28 +6,39 @@
     <title>Claude Code BR — Curso Gratuito</title>
     <style>
         :root {
-            --bg: #0f0f0f;
-            --bg-card: #1a1a2e;
-            --bg-card-hover: #1f1f3a;
-            --accent: #00d4ff;
-            --accent2: #7b2fff;
-            --accent3: #ff6b6b;
-            --text: #e0e0e0;
-            --text-muted: #8888aa;
-            --border: #2a2a4a;
-            --success: #00e676;
-            --warning: #ffab40;
-            --gradient: linear-gradient(135deg, #00d4ff, #7b2fff);
+            --bg: #050507;
+            --bg-card: #0e0e14;
+            --bg-card-hover: #141420;
+            --accent: #C8704A;
+            --accent2: #2E9B3E;
+            --accent3: #F4D03F;
+            --text: #e8e8ec;
+            --text-muted: #666;
+            --border: #1e1e28;
+            --success: #2E9B3E;
+            --warning: #C8704A;
+            --gradient: linear-gradient(135deg, #C8704A, #2E9B3E);
         }
 
         * { margin: 0; padding: 0; box-sizing: border-box; }
 
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
         body {
-            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+            font-family: 'Inter', -apple-system, sans-serif;
             background: var(--bg);
             color: var(--text);
             line-height: 1.7;
             overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .hero h1, .phase-number {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        code, pre, .prompt-box pre {
+            font-family: 'JetBrains Mono', monospace;
         }
 
         /* ── Hero ── */
@@ -48,8 +59,8 @@
             position: absolute;
             inset: 0;
             background:
-                radial-gradient(ellipse 600px 300px at 50% 55%, rgba(0,212,255,.04) 0%, transparent 100%),
-                radial-gradient(ellipse 400px 400px at 30% 70%, rgba(123,47,255,.03) 0%, transparent 100%);
+                radial-gradient(ellipse 600px 300px at 50% 55%, rgba(200,112,74,.06) 0%, transparent 100%),
+                radial-gradient(ellipse 400px 400px at 30% 70%, rgba(46,155,62,.03) 0%, transparent 100%);
             pointer-events: none;
         }
         /* Neon glow line at bottom of hero */
@@ -60,8 +71,8 @@
             left: 10%;
             right: 10%;
             height: 1px;
-            background: linear-gradient(to right, transparent, rgba(0,212,255,.3), rgba(123,47,255,.3), transparent);
-            box-shadow: 0 0 15px rgba(0,212,255,.15), 0 0 40px rgba(123,47,255,.08);
+            background: linear-gradient(to right, transparent, rgba(200,112,74,.3), rgba(46,155,62,.3), transparent);
+            box-shadow: 0 0 15px rgba(200,112,74,.15), 0 0 40px rgba(46,155,62,.08);
         }
         .hero-badge {
             display: inline-block;
@@ -77,8 +88,8 @@
             transition: border-color .4s, color .4s;
         }
         .hero-badge:hover {
-            border-color: rgba(0,212,255,.3);
-            color: rgba(0,212,255,.6);
+            border-color: rgba(200,112,74,.3);
+            color: rgba(200,112,74,.6);
         }
         .hero h1 {
             font-size: clamp(2.5rem, 6vw, 4.5rem);
@@ -87,7 +98,7 @@
             margin-bottom: .6rem;
             animation: fadeInUp .8s ease;
             letter-spacing: -1px;
-            text-shadow: 0 0 60px rgba(0,212,255,.08), 0 0 120px rgba(123,47,255,.05);
+            text-shadow: 0 0 60px rgba(200,112,74,.08), 0 0 120px rgba(46,155,62,.05);
         }
         .hero-subtitle {
             font-size: clamp(1rem, 2vw, 1.3rem);
@@ -123,8 +134,8 @@
         }
         .hero-cta:hover {
             color: #fff;
-            border-color: rgba(0,212,255,.4);
-            box-shadow: 0 0 20px rgba(0,212,255,.1), 0 0 60px rgba(0,212,255,.05);
+            border-color: rgba(200,112,74,.4);
+            box-shadow: 0 0 20px rgba(200,112,74,.1), 0 0 60px rgba(200,112,74,.05);
             transform: translateY(-2px);
         }
 
@@ -172,12 +183,12 @@
             align-items: center;
             justify-content: center;
             transition: all .3s ease;
-            box-shadow: 0 0 15px rgba(0,212,255,.2);
+            box-shadow: 0 0 15px rgba(200,112,74,.2);
         }
         .nav-toggle:hover {
             background: var(--accent);
             color: #000;
-            box-shadow: 0 0 25px rgba(0,212,255,.4);
+            box-shadow: 0 0 25px rgba(200,112,74,.4);
         }
         .nav-toggle.open { left: 260px; }
         .nav-toggle.open .arrow { transform: rotate(180deg); }
@@ -233,12 +244,12 @@
             font-size: .88rem;
         }
         .nav-item:hover {
-            background: rgba(0,212,255,.05);
+            background: rgba(200,112,74,.05);
             color: var(--text);
-            border-left-color: rgba(0,212,255,.3);
+            border-left-color: rgba(200,112,74,.3);
         }
         .nav-item.active {
-            background: rgba(0,212,255,.08);
+            background: rgba(200,112,74,.08);
             color: #fff;
             border-left-color: var(--accent);
         }
@@ -442,7 +453,7 @@
             border-bottom: 1px solid var(--border);
             color: var(--text-muted);
         }
-        tr:hover td { background: rgba(0,212,255,.03); }
+        tr:hover td { background: rgba(200,112,74,.03); }
 
         /* ── Steps Timeline ── */
         .timeline {
@@ -536,7 +547,7 @@
 
         /* ── Highlight boxes ── */
         .tip-box {
-            background: rgba(0,212,255,.06);
+            background: rgba(200,112,74,.06);
             border-left: 4px solid var(--accent);
             padding: 1rem 1.3rem;
             border-radius: 0 8px 8px 0;
@@ -563,8 +574,8 @@
             margin-right: .3rem;
             margin-bottom: .3rem;
         }
-        .tag-blue { background: rgba(0,212,255,.15); color: var(--accent); }
-        .tag-purple { background: rgba(123,47,255,.15); color: var(--accent2); }
+        .tag-blue { background: rgba(200,112,74,.15); color: var(--accent); }
+        .tag-purple { background: rgba(46,155,62,.15); color: var(--accent2); }
         .tag-red { background: rgba(255,107,107,.15); color: var(--accent3); }
         .tag-green { background: rgba(0,230,118,.15); color: var(--success); }
 
@@ -657,7 +668,7 @@
 
         /* ── Code inline ── */
         code {
-            background: rgba(0,212,255,.1);
+            background: rgba(200,112,74,.1);
             color: var(--accent);
             padding: .15rem .4rem;
             border-radius: 4px;
@@ -687,7 +698,7 @@
             justify-content: center;
         }
         .scroll-top.show { opacity: 1; transform: translateY(0); }
-        .scroll-top:hover { box-shadow: 0 6px 25px rgba(0,212,255,.4); }
+        .scroll-top:hover { box-shadow: 0 6px 25px rgba(200,112,74,.4); }
 
         /* ── Phase Header ── */
         .phase-header {
@@ -921,7 +932,7 @@
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background:rgba(0,212,255,.06);">
+                        <tr style="background:rgba(200,112,74,.06);">
                             <td><strong style="color:var(--accent);">Claude Code (Max)</strong></td>
                             <td style="color:var(--success);font-weight:600;">Assinatura Max</td>
                             <td style="color:var(--success);font-weight:600;">200K+ tokens (1M com Opus)</td>
@@ -1303,7 +1314,7 @@ Requisitos:
                         </tr>
                     </thead>
                     <tbody>
-                        <tr style="background:rgba(0,212,255,.06);">
+                        <tr style="background:rgba(200,112,74,.06);">
                             <td><strong style="color:var(--accent);">Claude Code</strong></td>
                             <td>Agente terminal completo, raciocínio profundo, leitura/escrita de arquivos, CLAUDE.md persistente</td>
                             <td>Ferramenta principal — projetos completos do zero ao deploy</td>
@@ -1695,7 +1706,7 @@ jobs:
 
 <!-- ═══════════ EM BREVE ═══════════ -->
 <section id="embreve" style="padding:5rem 0;background:linear-gradient(180deg, var(--bg) 0%, #050510 30%, #050510 70%, var(--bg) 100%);position:relative;overflow:hidden;">
-    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 800px 400px at 50% 50%, rgba(0,212,255,.05) 0%, transparent 100%);pointer-events:none;"></div>
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 800px 400px at 50% 50%, rgba(200,112,74,.05) 0%, transparent 100%);pointer-events:none;"></div>
     <div class="container" style="position:relative;z-index:1;">
         <div class="fade-in" style="text-align:center;">
             <span class="section-label" style="border-color:var(--accent2);color:var(--accent2);">Em Breve</span>
@@ -1753,7 +1764,7 @@ jobs:
 
             <div style="margin-top:2rem;">
                 <p style="color:rgba(255,255,255,.5);font-size:1.05rem;margin-bottom:.8rem;">Siga para não perder o lançamento:</p>
-                <a href="https://instagram.com/claudecodebr" target="_blank" rel="noopener" style="display:inline-block;padding:.8rem 2.2rem;background:var(--gradient);color:#fff;font-weight:700;font-size:.95rem;border-radius:50px;text-decoration:none;letter-spacing:1px;transition:all .3s;box-shadow:0 0 25px rgba(0,212,255,.2);">@claudecodebr no Instagram</a>
+                <a href="https://instagram.com/claudecodebr" target="_blank" rel="noopener" style="display:inline-block;padding:.8rem 2.2rem;background:var(--gradient);color:#fff;font-weight:700;font-size:.95rem;border-radius:50px;text-decoration:none;letter-spacing:1px;transition:all .3s;box-shadow:0 0 25px rgba(200,112,74,.2);">@claudecodebr no Instagram</a>
             </div>
         </div>
     </div>
