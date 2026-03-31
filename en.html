@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Free Claude Code course. Learn to build professional software with AI, do conceito ao deploy. Agentes de IA, segurança, RAG, APIs.">
+    <meta name="keywords" content="claude code curso, curso IA gratuito, programação com IA, claude code tutorial, vibe coding, agentes IA, automação com IA, claude code brasil">
+    <meta name="author" content="Claude Code BR">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Claude Code BR — Curso Gratuito">
+    <meta property="og:description" content="Learn to build professional software with AI. Complete free course.">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://curso-claudecodebr.vercel.app/">
+    <title>Claude Code BR — Free Course</title>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XLE2QMGQKC"></script>
+    <script>window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-XLE2QMGQKC');</script>
+    <style>
+        :root {
+            --bg: #050507;
+            --bg-card: #0e0e14;
+            --bg-card-hover: #141420;
+            --accent: #C8704A;
+            --accent2: #2E9B3E;
+            --accent3: #F4D03F;
+            --text: #e8e8ec;
+            --text-muted: #666;
+            --border: #1e1e28;
+            --success: #2E9B3E;
+            --warning: #C8704A;
+            --gradient: linear-gradient(135deg, #C8704A, #2E9B3E);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=JetBrains+Mono:wght@400;500;700&display=swap');
+
+        body {
+            font-family: 'Inter', -apple-system, sans-serif;
+            background: var(--bg);
+            color: var(--text);
+            line-height: 1.7;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        h1, h2, h3, h4, .hero h1, .phase-number {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        code, pre, .prompt-box pre {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* ── Hero ── */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+            background: #050507;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero::before {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background:
+                radial-gradient(ellipse 600px 300px at 50% 55%, rgba(200,112,74,.06) 0%, transparent 100%),
+                radial-gradient(ellipse 400px 400px at 30% 70%, rgba(46,155,62,.03) 0%, transparent 100%);
+            pointer-events: none;
+        }
+        /* Neon glow line at bottom of hero */
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 10%;
+            right: 10%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(200,112,74,.3), rgba(46,155,62,.3), transparent);
+            box-shadow: 0 0 15px rgba(200,112,74,.15), 0 0 40px rgba(46,155,62,.08);
+        }
+        .hero-badge {
+            display: inline-block;
+            padding: .4rem 1.2rem;
+            border: 1px solid rgba(255,255,255,.12);
+            border-radius: 50px;
+            font-size: .8rem;
+            color: rgba(255,255,255,.45);
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-bottom: 2rem;
+            animation: fadeInDown .8s ease;
+            transition: border-color .4s, color .4s;
+        }
+        .hero-badge:hover {
+            border-color: rgba(200,112,74,.3);
+            color: rgba(200,112,74,.6);
+        }
+        .hero h1 {
+            font-size: clamp(2.5rem, 6vw, 4.5rem);
+            font-weight: 800;
+            color: #ffffff;
+            margin-bottom: .6rem;
+            animation: fadeInUp .8s ease;
+            letter-spacing: -1px;
+            text-shadow: 0 0 60px rgba(200,112,74,.08), 0 0 120px rgba(46,155,62,.05);
+        }
+        .hero-subtitle {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            color: rgba(255,255,255,.2);
+            font-weight: 300;
+            letter-spacing: 6px;
+            text-transform: uppercase;
+            margin-bottom: 2.5rem;
+            animation: fadeInUp .9s ease;
+        }
+        .hero p {
+            max-width: 600px;
+            font-size: 1.05rem;
+            color: rgba(255,255,255,.35);
+            margin-bottom: 3rem;
+            animation: fadeInUp 1s ease;
+            line-height: 1.8;
+        }
+        .hero-cta {
+            display: inline-block;
+            padding: .8rem 2.2rem;
+            background: transparent;
+            color: rgba(255,255,255,.7);
+            font-weight: 600;
+            font-size: .9rem;
+            border: 1px solid rgba(255,255,255,.15);
+            border-radius: 50px;
+            cursor: pointer;
+            text-decoration: none;
+            letter-spacing: 1px;
+            transition: all .4s ease;
+            animation: fadeInUp 1.2s ease;
+        }
+        .hero-cta:hover {
+            color: #fff;
+            border-color: rgba(200,112,74,.4);
+            box-shadow: 0 0 20px rgba(200,112,74,.1), 0 0 60px rgba(200,112,74,.05);
+            transform: translateY(-2px);
+        }
+
+        /* ── Progress Bar ── */
+        .progress-bar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--gradient);
+            z-index: 9999;
+            transition: width .3s ease;
+        }
+
+        /* ── Sidebar Navigation ── */
+        .nav-sidebar {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 100;
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            padding: .6rem;
+            transition: all .3s ease;
+        }
+
+        .nav-toggle {
+            position: fixed;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%) translateX(0);
+            z-index: 101;
+            width: 36px;
+            height: 36px;
+            background: rgba(26,26,46,.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid var(--accent);
+            border-radius: 50%;
+            color: var(--accent);
+            font-size: 1rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all .3s ease;
+            box-shadow: 0 0 15px rgba(200,112,74,.2);
+        }
+        .nav-toggle:hover {
+            background: var(--accent);
+            color: #000;
+            box-shadow: 0 0 25px rgba(200,112,74,.4);
+        }
+        .nav-toggle.open { left: 260px; }
+        .nav-toggle.open .arrow { transform: rotate(180deg); }
+        .arrow { transition: transform .3s; display: inline-block; }
+
+        .nav-panel {
+            position: fixed;
+            left: -280px;
+            top: 0;
+            width: 270px;
+            height: 100vh;
+            background: rgba(15,15,15,.97);
+            backdrop-filter: blur(15px);
+            border-right: 1px solid var(--border);
+            z-index: 100;
+            padding: 2rem 0;
+            transition: left .3s ease;
+            overflow-y: auto;
+            scrollbar-width: thin;
+            scrollbar-color: var(--accent2) transparent;
+        }
+        .nav-panel.open { left: 0; }
+
+        .nav-panel-title {
+            font-size: .7rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            padding: 0 1.5rem;
+            margin-bottom: 1.5rem;
+        }
+        .nav-panel-brand {
+            font-size: 1.2rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            padding: 0 1.5rem;
+            margin-bottom: .5rem;
+        }
+
+        .nav-item {
+            display: flex;
+            align-items: center;
+            gap: .8rem;
+            padding: .7rem 1.5rem;
+            cursor: pointer;
+            transition: all .2s;
+            border-left: 3px solid transparent;
+            text-decoration: none;
+            color: var(--text-muted);
+            font-size: .88rem;
+        }
+        .nav-item:hover {
+            background: rgba(200,112,74,.05);
+            color: var(--text);
+            border-left-color: rgba(200,112,74,.3);
+        }
+        .nav-item.active {
+            background: rgba(200,112,74,.08);
+            color: #fff;
+            border-left-color: var(--accent);
+        }
+        .nav-dot-mini {
+            width: 8px;
+            height: 8px;
+            min-width: 8px;
+            border-radius: 50%;
+            background: var(--border);
+            transition: all .3s;
+        }
+        .nav-item.active .nav-dot-mini {
+            background: var(--accent);
+            box-shadow: 0 0 8px var(--accent);
+        }
+        .nav-item-label { line-height: 1.3; }
+        .nav-item-sub {
+            font-size: .7rem;
+            color: var(--text-muted);
+            opacity: .7;
+        }
+
+        .nav-divider {
+            height: 1px;
+            background: var(--border);
+            margin: .8rem 1.5rem;
+        }
+
+        /* Mini dots (when panel is closed) */
+        .nav-dots-mini {
+            position: fixed;
+            left: 0;
+            top: 50%;
+            transform: translateY(-50%);
+            z-index: 99;
+            display: flex;
+            flex-direction: column;
+            gap: .6rem;
+            padding: 1rem .5rem;
+            background: rgba(15,15,15,.85);
+            backdrop-filter: blur(10px);
+            border-radius: 0 12px 12px 0;
+            border: 1px solid var(--border);
+            border-left: none;
+            transition: opacity .3s;
+        }
+        .nav-dots-mini.hidden { opacity: 0; pointer-events: none; }
+        .nav-mini-dot {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--border);
+            cursor: pointer;
+            transition: all .3s;
+        }
+        .nav-mini-dot.active { background: var(--accent); box-shadow: 0 0 8px var(--accent); }
+
+        /* ── Sections ── */
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 0 1.5rem;
+        }
+
+        section {
+            padding: 5rem 0;
+            position: relative;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: .75rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--accent);
+            border: 1px solid var(--accent);
+            padding: .25rem .8rem;
+            border-radius: 4px;
+            margin-bottom: 1rem;
+        }
+
+        h2 {
+            font-size: clamp(1.6rem, 3.5vw, 2.4rem);
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: #fff;
+        }
+
+        h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            color: #fff;
+            margin: 2rem 0 .8rem;
+        }
+
+        p, li { color: var(--text-muted); }
+        p { margin-bottom: 1rem; }
+
+        /* ── Cards ── */
+        .card {
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            padding: 1.8rem;
+            margin-bottom: 1.5rem;
+            transition: border-color .3s, transform .3s;
+        }
+        .card:hover { border-color: var(--accent); transform: translateY(-2px); }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+        .card-grid .card { margin-bottom: 0; }
+
+        .card-icon {
+            font-size: 1.2rem;
+            margin-bottom: .8rem;
+            display: block;
+            color: var(--accent);
+            font-family: 'JetBrains Mono', monospace;
+            font-weight: 700;
+        }
+        .card h4 {
+            color: #fff;
+            font-size: 1.05rem;
+            margin-bottom: .5rem;
+        }
+        .card p:last-child { margin-bottom: 0; }
+
+        /* ── Prompt Box ── */
+        .prompt-box {
+            position: relative;
+            background: #0d1117;
+            border: 1px solid var(--accent);
+            border-radius: 12px;
+            padding: 1.5rem;
+            margin: 1.5rem 0;
+            overflow: hidden;
+        }
+        .prompt-box::before {
+            content: 'PROMPT COPIÁVEL';
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: var(--gradient);
+            color: #fff;
+            font-size: .65rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            padding: .3rem .8rem;
+            border-radius: 0 12px 0 8px;
+        }
+        .prompt-box pre {
+            white-space: pre-wrap;
+            word-wrap: break-word;
+            font-family: 'Fira Code', 'Cascadia Code', 'Consolas', monospace;
+            font-size: .88rem;
+            color: #c9d1d9;
+            line-height: 1.6;
+            margin: 0;
+        }
+        .copy-btn {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            background: var(--accent2);
+            color: #fff;
+            border: none;
+            padding: .45rem 1rem;
+            border-radius: 6px;
+            font-size: .78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all .2s;
+        }
+        .copy-btn:hover { background: var(--accent); color: #000; }
+        .copy-btn.copied { background: var(--success); }
+
+        /* ── Table ── */
+        .table-wrap {
+            overflow-x: auto;
+            margin: 1.5rem 0;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .9rem;
+        }
+        th {
+            background: var(--bg-card);
+            color: var(--accent);
+            padding: .9rem 1rem;
+            text-align: left;
+            font-weight: 600;
+            border-bottom: 2px solid var(--accent2);
+        }
+        td {
+            padding: .75rem 1rem;
+            border-bottom: 1px solid var(--border);
+            color: var(--text-muted);
+        }
+        tr:hover td { background: rgba(200,112,74,.03); }
+
+        /* ── Steps Timeline ── */
+        .timeline {
+            position: relative;
+            padding-left: 2.5rem;
+            margin: 2rem 0;
+        }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, var(--accent), var(--accent2), var(--accent3));
+        }
+        .timeline-step {
+            position: relative;
+            margin-bottom: 2rem;
+            padding: 1.5rem;
+            background: var(--bg-card);
+            border: 1px solid var(--border);
+            border-radius: 12px;
+            transition: border-color .3s;
+        }
+        .timeline-step:hover { border-color: var(--accent); }
+        .timeline-step::before {
+            content: attr(data-step);
+            position: absolute;
+            left: -2.5rem;
+            top: 1.5rem;
+            width: 24px;
+            height: 24px;
+            background: var(--gradient);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: .7rem;
+            font-weight: 700;
+            color: #fff;
+            text-align: center;
+            line-height: 24px;
+        }
+        .timeline-step h4 {
+            color: #fff;
+            margin-bottom: .5rem;
+        }
+
+        /* ── Accordion / Collapsible ── */
+        .accordion {
+            margin: 1.5rem 0;
+        }
+        .accordion-item {
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            margin-bottom: .8rem;
+            overflow: hidden;
+            transition: border-color .3s;
+        }
+        .accordion-item.open { border-color: var(--accent); }
+        .accordion-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.3rem;
+            background: var(--bg-card);
+            cursor: pointer;
+            user-select: none;
+            transition: background .3s;
+        }
+        .accordion-header:hover { background: var(--bg-card-hover); }
+        .accordion-header h4 { color: #fff; font-size: 1rem; }
+        .accordion-arrow {
+            color: var(--accent);
+            font-size: 1.2rem;
+            transition: transform .3s;
+        }
+        .accordion-item.open .accordion-arrow { transform: rotate(180deg); }
+        .accordion-body {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height .4s ease, padding .3s;
+            padding: 0 1.3rem;
+            background: rgba(26,26,46,.5);
+        }
+        .accordion-item.open .accordion-body {
+            max-height: 2000px;
+            padding: 1rem 1.3rem 1.3rem;
+        }
+
+        /* ── Highlight boxes ── */
+        .tip-box {
+            background: rgba(200,112,74,.06);
+            border-left: 4px solid var(--accent);
+            padding: 1rem 1.3rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        .tip-box strong { color: var(--accent); }
+
+        .warn-box {
+            background: rgba(255,171,64,.06);
+            border-left: 4px solid var(--warning);
+            padding: 1rem 1.3rem;
+            border-radius: 0 8px 8px 0;
+            margin: 1.5rem 0;
+        }
+        .warn-box strong { color: var(--warning); }
+
+        /* ── Tags ── */
+        .tag {
+            display: inline-block;
+            padding: .2rem .6rem;
+            font-size: .72rem;
+            font-weight: 600;
+            border-radius: 4px;
+            margin-right: .3rem;
+            margin-bottom: .3rem;
+        }
+        .tag-blue { background: rgba(200,112,74,.15); color: var(--accent); }
+        .tag-purple { background: rgba(46,155,62,.15); color: var(--accent2); }
+        .tag-red { background: rgba(255,107,107,.15); color: var(--accent3); }
+        .tag-green { background: rgba(0,230,118,.15); color: var(--success); }
+
+        /* ── Checklist ── */
+        .checklist {
+            list-style: none;
+            margin: 1rem 0;
+        }
+        .checklist li {
+            padding: .6rem 0;
+            padding-left: 2rem;
+            position: relative;
+            cursor: pointer;
+            transition: color .3s;
+        }
+        .checklist li::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: .65rem;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border);
+            border-radius: 4px;
+            transition: all .3s;
+        }
+        .checklist li.checked::before {
+            background: var(--success);
+            border-color: var(--success);
+        }
+        .checklist li.checked::after {
+            content: '\2713';
+            position: absolute;
+            left: 3px;
+            top: .5rem;
+            color: #000;
+            font-size: .8rem;
+            font-weight: 700;
+        }
+        .checklist li.checked { color: var(--success); text-decoration: line-through; text-decoration-color: rgba(0,230,118,.3); }
+
+        /* ── Divider ── */
+        .divider {
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--border), transparent);
+            margin: 3rem 0;
+        }
+
+        /* ── Footer ── */
+        footer {
+            text-align: center;
+            padding: 3rem 1.5rem;
+            color: var(--text-muted);
+            font-size: .85rem;
+            border-top: 1px solid var(--border);
+        }
+        footer a { color: var(--accent); text-decoration: none; }
+
+        /* ── Animations ── */
+        @keyframes fadeInUp {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        @keyframes fadeInDown {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .fade-in {
+            opacity: 0;
+            transform: translateY(25px);
+            transition: opacity .6s ease, transform .6s ease;
+        }
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ── Responsive ── */
+        @media (max-width: 768px) {
+            .nav-dots-mini { display: none; }
+            .nav-toggle { left: 8px; width: 32px; height: 32px; font-size: .85rem; }
+            .nav-toggle.open { left: 230px; }
+            .nav-panel { width: 240px; }
+            .hero { min-height: 80vh; }
+            .card-grid { grid-template-columns: 1fr; }
+            .prompt-box { padding: 1rem; }
+            .prompt-box pre { font-size: .8rem; }
+            .timeline { padding-left: 2rem; }
+        }
+
+        /* ── Code inline ── */
+        code {
+            background: rgba(200,112,74,.1);
+            color: var(--accent);
+            padding: .15rem .4rem;
+            border-radius: 4px;
+            font-size: .88rem;
+            font-family: 'Fira Code', 'Consolas', monospace;
+        }
+
+        /* ── Scroll to top ── */
+        .scroll-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            width: 44px;
+            height: 44px;
+            background: var(--gradient);
+            border: none;
+            border-radius: 50%;
+            color: #fff;
+            font-size: 1.3rem;
+            cursor: pointer;
+            opacity: 0;
+            transform: translateY(10px);
+            transition: all .3s;
+            z-index: 100;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .scroll-top.show { opacity: 1; transform: translateY(0); }
+        .scroll-top:hover { box-shadow: 0 6px 25px rgba(200,112,74,.4); }
+
+        /* ── Phase Header ── */
+        .phase-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+        .phase-number {
+            width: 56px;
+            height: 56px;
+            min-width: 56px;
+            background: var(--gradient);
+            border-radius: 14px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            font-weight: 800;
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Progress Bar -->
+<div class="progress-bar" id="progressBar"></div>
+
+<!-- Mini dots (visible when panel is closed) -->
+<div class="nav-dots-mini" id="navDotsMini">
+    <div class="nav-mini-dot active" data-target="hero" title="Início"></div>
+    <div class="nav-mini-dot" data-target="filosofia" title="Filosofia"></div>
+    <div class="nav-mini-dot" data-target="infra" title="Infrastructure"></div>
+    <div class="nav-mini-dot" data-target="fase1" title="Phase 1"></div>
+    <div class="nav-mini-dot" data-target="prompts" title="Prompts"></div>
+    <div class="nav-mini-dot" data-target="fase2" title="Phase 2"></div>
+    <div class="nav-mini-dot" data-target="fase3" title="Phase 3"></div>
+    <div class="nav-mini-dot" data-target="apis" title="APIs"></div>
+    <div class="nav-mini-dot" data-target="seguranca" title="Security"></div>
+    <div class="nav-mini-dot" data-target="deploy" title="Deploy"></div>
+    <div class="nav-mini-dot" data-target="workflow" title="Workflow"></div>
+    <div class="nav-mini-dot" data-target="checklist" title="Checklist"></div>
+    <div class="nav-mini-dot" data-target="embreve" title="Em Breve"></div>
+</div>
+
+<!-- Toggle Button -->
+<button class="nav-toggle" id="navToggle" onclick="toggleNav()" title="Abrir sumário">
+    <span class="arrow">&#9654;</span>
+</button>
+
+<!-- Full Navigation Panel -->
+<nav class="nav-panel" id="navPanel">
+    <div class="nav-panel-brand">Claude Code BR</div>
+    <div class="nav-panel-title">Sumário do Tutorial</div>
+
+    <a class="nav-item active" data-target="hero" onclick="navTo('hero')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Início</div>
+            <div class="nav-item-sub">Overview do curso</div>
+        </div>
+    </a>
+
+    <div class="nav-divider"></div>
+
+    <a class="nav-item" data-target="filosofia" onclick="navTo('filosofia')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Filosofia do Desenvolvedor</div>
+            <div class="nav-item-sub">Lógica > Sintaxe</div>
+        </div>
+    </a>
+
+    <a class="nav-item" data-target="infra" onclick="navTo('infra')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Infrastructure</div>
+            <div class="nav-item-sub">Claude Code, Gemini e mais</div>
+        </div>
+    </a>
+
+    <div class="nav-divider"></div>
+
+    <a class="nav-item" data-target="fase1" onclick="navTo('fase1')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Phase 1: Deep Research</div>
+            <div class="nav-item-sub">Criar o Documento Mestre</div>
+        </div>
+    </a>
+
+    <a class="nav-item" data-target="prompts" onclick="navTo('prompts')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Prompts Prontos</div>
+            <div class="nav-item-sub">7 templates copiáveis</div>
+        </div>
+    </a>
+
+    <div class="nav-divider"></div>
+
+    <a class="nav-item" data-target="fase2" onclick="navTo('fase2')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Phase 2: Implementação</div>
+            <div class="nav-item-sub">Agentes de IA + IDE</div>
+        </div>
+    </a>
+
+    <a class="nav-item" data-target="fase3" onclick="navTo('fase3')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Phase 3: Canvas e Alternatives</div>
+            <div class="nav-item-sub">Ferramentas visuais e comparação</div>
+        </div>
+    </a>
+
+    <div class="nav-divider"></div>
+
+    <a class="nav-item" data-target="apis" onclick="navTo('apis')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">APIs Essenciais</div>
+            <div class="nav-item-sub">Arsenal do desenvolvedor 2026</div>
+        </div>
+    </a>
+
+    <a class="nav-item" data-target="seguranca" onclick="navTo('seguranca')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Security</div>
+            <div class="nav-item-sub">Authentication, HTTPS, LGPD</div>
+        </div>
+    </a>
+
+    <a class="nav-item" data-target="deploy" onclick="navTo('deploy')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Deploy</div>
+            <div class="nav-item-sub">Docker, CI/CD, monitoramento</div>
+        </div>
+    </a>
+
+    <div class="nav-divider"></div>
+
+    <a class="nav-item" data-target="workflow" onclick="navTo('workflow')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Complete Workflow</div>
+            <div class="nav-item-sub">Do conceito ao produto final</div>
+        </div>
+    </a>
+
+    <a class="nav-item" data-target="checklist" onclick="navTo('checklist')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Final Checklist</div>
+            <div class="nav-item-sub">Verification + Regras de ouro</div>
+        </div>
+    </a>
+
+    <div class="nav-divider"></div>
+
+    <a class="nav-item" data-target="embreve" onclick="navTo('embreve')">
+        <div class="nav-dot-mini"></div>
+        <div>
+            <div class="nav-item-label">Em Breve</div>
+            <div class="nav-item-sub">Curso completo extensivo</div>
+        </div>
+    </a>
+</nav>
+
+<!-- ═══════════ HERO ═══════════ -->
+<header class="hero" id="hero">
+    <span class="hero-badge">Claude Code BR — Guia Gratuito</span>
+    <h1>Claude Code BR</h1>
+    <div class="hero-subtitle">Build professional software with AI</div>
+    <p>The free guide to building real software using Claude Code and AI agents — from concept to deploy.</p>
+    <a href="#filosofia" class="hero-cta">Start the Tutorial &darr;</a>
+</header>
+
+<!-- ═══════════ FILOSOFIA ═══════════ -->
+<section id="filosofia">
+    <div class="container">
+        <div class="fade-in">
+            <span class="section-label">Foundation</span>
+            <h2>The Logic Developer Philosophy</h2>
+            <p>The fundamental premise: you don't need to know <em>how</em> to implement. You need to know <em>what</em> you want to happen. AI handles the rest.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Solution Logic</h4>
+                    <p>Você sabe o fluxo: dado A entra, transformação X acontece, resultado B sai. Isso é o que importa.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Technical Implementation</h4>
+                    <p>Qual biblioteca usar? Qual API chamar? Qual sintaxe? A IA resolve isso com pesquisa profunda.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Result</h4>
+                    <p>Você se torna um <strong>Arquiteto de Intenções</strong>: descreve o projeto com precisão cirúrgica e a IA constrói.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Conceito-chave:</strong> O sucesso do projeto depende da <em>qualidade da requisição inicial</em> e da <em>profundidade da pesquisa documental</em>. Quanto melhor você descreve, melhor a IA entrega.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ INFRAESTRUTURA ═══════════ -->
+<section id="infra">
+    <div class="container">
+        <div class="fade-in">
+            <span class="section-label">Step 0</span>
+            <h2>Infrastructure: Suas Ferramentas de IA</h2>
+            <p>Antes de começar, você precisa entender as ferramentas. A janela de contexto define o limite do que a IA pode "guardar na cabeça". O Claude Code com assinatura Max é a nossa recomendação principal.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ferramenta</th>
+                            <th>Plano</th>
+                            <th>Contexto</th>
+                            <th>Destaque</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:rgba(200,112,74,.06);">
+                            <td><strong style="color:var(--accent);">Claude Code (Max)</strong></td>
+                            <td style="color:var(--success);font-weight:600;">Assinatura Max</td>
+                            <td style="color:var(--success);font-weight:600;">200K+ tokens (1M com Opus)</td>
+                            <td style="color:var(--success);font-weight:600;">Agente terminal completo, leitura/escrita de arquivos, execução de comandos, raciocínio profundo</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Claude Code (Pro)</strong></td>
+                            <td>Assinatura Pro</td>
+                            <td>200K tokens</td>
+                            <td>Mesmo agente, limites de uso menores</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gemini Advanced</strong></td>
+                            <td>Google One AI Premium</td>
+                            <td>1.000.000+ tokens</td>
+                            <td>Deep Research, integração Google Workspace</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gemini Grátis</strong></td>
+                            <td>Gratuito</td>
+                            <td>32.000 tokens</td>
+                            <td>5 pesquisas/mês, bom para projetos simples</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tip-box">
+                <strong>Recomendação:</strong> O <strong>Claude Code com assinatura Max</strong> é a ferramenta principal deste guia. Ele opera diretamente no seu terminal, lê e escreve arquivos, executa comandos e mantém contexto do projeto inteiro via <code>CLAUDE.md</code>. Para pesquisa profunda e geração do Documento Mestre, o <strong>Gemini Deep Research</strong> continua sendo uma excelente opção complementar.
+            </div>
+
+            <div class="warn-box">
+                <strong>Atenção:</strong> Com ferramentas gratuitas (contexto reduzido, limites de uso), projetos com 20+ páginas de especificações podem perder coerência. Para projetos sérios, invista no Claude Code Max ou Gemini Advanced.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FASE 1 ═══════════ -->
+<section id="fase1">
+    <div class="container">
+        <div class="fade-in">
+            <div class="phase-header">
+                <div class="phase-number">1</div>
+                <div>
+                    <span class="section-label">Phase 1</span>
+                    <h2 style="margin-bottom:0;">A Gênese: Deep Research</h2>
+                </div>
+            </div>
+
+            <p>Esta é a parte <strong>mais importante</strong> de todo o processo. Você vai criar o <strong>"Documento Mestre"</strong> (a "Bíblia do Projeto") &mdash; um relatório técnico de 15 a 25 páginas que detalha cada componente da sua aplicação.</p>
+
+            <h3>O que o prompt de pesquisa profunda deve conter:</h3>
+
+            <div class="timeline">
+                <div class="timeline-step" data-step="1">
+                    <h4>Intenção Total</h4>
+                    <p>Explicação detalhada do objetivo final. O que o software faz? Para quem? Que problema resolve? Que valor entrega?</p>
+                </div>
+                <div class="timeline-step" data-step="2">
+                    <h4>Exploração de Possibilidades</h4>
+                    <p>Ordem direta para a IA explorar TODAS as tecnologias, linguagens e abordagens mais efetivas no mercado atual.</p>
+                </div>
+                <div class="timeline-step" data-step="3">
+                    <h4>Seleção de APIs e Bibliotecas</h4>
+                    <p>Pedido para identificar as melhores APIs para cada função, garantindo tecnologia moderna e estável.</p>
+                </div>
+                <div class="timeline-step" data-step="4">
+                    <h4>Dedução de Workflow</h4>
+                    <p>Instrução para a IA completar as lacunas do fluxo de trabalho que você pode não ter visualizado.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Tempo estimado:</strong> A pesquisa profunda (via Gemini Deep Research ou Claude) leva de 15 a 30 minutos, navegando por 50 a 100 fontes (documentações, repositórios, artigos técnicos) para sintetizar o plano.
+            </div>
+
+            <h3>Formato de download: Markdown > PDF</h3>
+            <p>Sempre baixe em <code>.md</code> (Markdown) ou <code>.txt</code>. O Markdown preserva a estrutura de cabeçalhos, listas e blocos de código de forma "crua", facilitando a leitura por agentes de IA e integração em IDEs como VS Code.</p>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ PROMPTS PRONTOS ═══════════ -->
+<section id="prompts">
+    <div class="container">
+        <div class="fade-in">
+            <span class="section-label">Prompt Engineering</span>
+            <h2>Ready-to-Use Prompts</h2>
+            <p>Estes são templates testados para cada etapa do processo. Copie, adapte os trechos entre <code>[colchetes]</code> e cole no Claude Code ou Gemini Deep Research.</p>
+
+            <!-- PROMPT 1 -->
+            <h3>Prompt 1 &mdash; Pesquisa Profunda (Documento Mestre)</h3>
+            <div class="prompt-box">
+                <pre>Você é um Engenheiro de Software Sênior e Especialista em Arquitetura de Nuvem. Sua tarefa é criar um documento técnico exaustivo de 15 a 25 páginas sobre o seguinte projeto:
+
+## PROJETO: [Nome do seu projeto]
+
+### INTENÇÃO TOTAL:
+Quero construir [descreva detalhadamente o que o software faz, para quem, e que problema resolve]. O usuário final vai [descreva o fluxo completo do usuário: como entra, o que faz, o que vê, o que recebe].
+
+### DADOS E FLUXO:
+- O sistema recebe [tipo de dado de entrada]
+- Processa usando [descreva a lógica/transformação desejada]
+- Gera como saída [resultado esperado]
+- Os dados são armazenados em [onde/como]
+
+### REQUISITOS OBRIGATÓRIOS:
+1. [Requisito funcional 1]
+2. [Requisito funcional 2]
+3. [Requisito funcional 3]
+4. Interface [web/mobile/desktop] com design [moderno/minimalista/etc]
+5. Authentication de usuários [se aplicável]
+
+### INSTRUÇÕES DE PESQUISA:
+- Explore TODAS as tecnologias, frameworks e linguagens de programação mais efetivas e modernas do mercado atual (2025-2026) para cada componente
+- Identifique as melhores APIs para cada função específica, comparando pelo menos 3 opções para cada uma
+- Crie uma MATRIZ DE DECISÃO comparando cada opção em termos de: custo, latência, facilidade de implementação, documentação e estabilidade
+- Deduza e complete quaisquer lacunas no meu workflow que eu possa não ter visualizado
+- Inclua considerações de segurança, escalabilidade e performance
+- Use cabeçalhos Markdown claros (## e ###) e tabelas comparativas obrigatoriamente
+- Cite todas as fontes consultadas
+
+### FORMATO DE SAÍDA:
+Documento Markdown estruturado com:
+1. Resumo Executivo
+2. Arquitetura do Sistema (com diagrama textual)
+3. Stack Tecnológico Recomendado (com justificativas)
+4. APIs e Serviços Externos (com matriz de decisão)
+5. Modelo de Dados
+6. Fluxo de Telas/Interface
+7. Plano de Implementação (passo a passo)
+8. Estimativa de Custos de Infrastructure
+9. Riscos e Mitigações
+10. Referências</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <!-- PROMPT 2 -->
+            <h3>Prompt 2 &mdash; Refinar o Plano de Pesquisa (antes de confirmar)</h3>
+            <div class="prompt-box">
+                <pre>Antes de iniciar a pesquisa, edite o plano para incluir também:
+
+- Comparação com os seguintes competidores: [nome1, nome2, nome3]
+- Análise específica de segurança para [LGPD/GDPR/autenticação OAuth]
+- Verificar compatibilidade com [plataforma/serviço específico]
+- Explorar opções de deploy gratuito ou de baixo custo (Vercel, Railway, Supabase, etc.)
+- Incluir uma seção sobre testes automatizados e CI/CD</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <!-- PROMPT 3 -->
+            <h3>Prompt 3 &mdash; Injeção de Contexto no Claude Code / IDE</h3>
+            <div class="prompt-box">
+                <pre>Leia o arquivo PROJETO.md nesta pasta. Este é o documento de especificações completo do meu projeto.
+
+Antes de começar a codar, me explique:
+1. Como este projeto funcionará na prática (arquitetura geral)
+2. Quais são os passos iniciais de implementação
+3. Quais dependências precisaremos instalar
+4. Qual a estrutura de pastas recomendada
+5. Quais são os pontos mais críticos/complexos do projeto
+
+Depois de me explicar, aguarde minha confirmação antes de começar a gerar código.</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <!-- PROMPT 4 -->
+            <h3>Prompt 4 &mdash; Iniciar a Construção Assistida</h3>
+            <div class="prompt-box">
+                <pre>Ótimo, entendi a arquitetura. Agora vamos começar a construir.
+
+Siga exatamente o Plano de Implementação do documento PROJETO.md.
+Comece pelo Passo 1: [descreva o primeiro passo do plano].
+
+Regras:
+- Crie a estrutura de pastas completa primeiro
+- Instale todas as dependências necessárias
+- Gere os arquivos de configuração (package.json, .env.example, etc.)
+- Implemente a lógica principal seguindo o documento
+- Adicione comentários explicativos no código para que eu possa aprender
+- A cada etapa concluída, me diga o que foi feito e qual é o próximo passo
+- Se encontrar alguma ambiguidade no documento, pergunte antes de assumir</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <!-- PROMPT 5 -->
+            <h3>Prompt 5 &mdash; Criar Arquivo de Contexto Persistente (CLAUDE.md)</h3>
+            <div class="prompt-box">
+                <pre>Crie um arquivo chamado CLAUDE.md na raiz do projeto com as seguintes informações para manter consistência entre sessões:
+
+# Contexto do Projeto: [Nome]
+
+## Decisões Arquiteturais
+- [Listar decisões já tomadas]
+
+## Stack Definido
+- Frontend: [tecnologia]
+- Backend: [tecnologia]
+- Banco de Dados: [tecnologia]
+- Deploy: [plataforma]
+
+## Regras de Negócio
+- [Regra 1]
+- [Regra 2]
+
+## Restrições
+- [Restrição 1]
+- [Restrição 2]
+
+## Status Atual
+- [x] Fase concluída
+- [ ] Fase em andamento
+- [ ] Próxima fase
+
+## Notas Importantes
+- [Qualquer coisa que a IA não deve esquecer entre sessões]</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <!-- PROMPT 6 -->
+            <h3>Prompt 6 &mdash; Depuração / Debug</h3>
+            <div class="prompt-box">
+                <pre>O seguinte erro apareceu ao executar [comando]:
+
+```
+[Cole a mensagem de erro completa aqui]
+```
+
+Contexto:
+- Arquivo afetado: [nome do arquivo]
+- O que eu estava tentando fazer: [descreva a ação]
+- Último trecho de código alterado: [descreva ou cole]
+
+Analise o erro, explique a causa raiz em linguagem simples, e corrija o código. Mostre o antes e o depois da correção.</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <!-- PROMPT 7 -->
+            <h3>Prompt 7 &mdash; Transformar Documento em Página Web</h3>
+            <div class="prompt-box">
+                <pre>Converta o conteúdo do arquivo PROJETO.md em uma página web moderna e profissional usando HTML + Tailwind CSS.
+
+Requisitos:
+- Design escuro e moderno
+- Responsivo (mobile-first)
+- Navegação lateral ou por seções
+- Tabelas estilizadas para comparações
+- Blocos de código com destaque de sintaxe
+- Modo de impressão otimizado via CSS @media print
+- Um único arquivo HTML autocontido (CSS inline ou via CDN)</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <div class="tip-box">
+                <strong>Dica de ouro:</strong> Defina sempre uma <em>persona</em> no início do prompt ("Você é um Engenheiro Sênior..."). Exija formato Markdown com cabeçalhos e tabelas. E se o plano parecer incompleto, edite-o ANTES de confirmar a pesquisa.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FASE 2 ═══════════ -->
+<section id="fase2">
+    <div class="container">
+        <div class="fade-in">
+            <div class="phase-header">
+                <div class="phase-number">2</div>
+                <div>
+                    <span class="section-label">Phase 2</span>
+                    <h2 style="margin-bottom:0;">Implementação com Agentes de IA</h2>
+                </div>
+            </div>
+
+            <p>Com o Documento Mestre em mãos, agora você usa o <strong>Claude Code</strong> (ferramenta principal) para transformar o texto em código real. Alternatives como Gemini Code Assist e Windsurf também funcionam.</p>
+
+            <h3>Fluxo de Trabalho Passo a Passo</h3>
+
+            <div class="timeline">
+                <div class="timeline-step" data-step="1">
+                    <h4>Configurar o Ambiente</h4>
+                    <p>Crie uma pasta local para o projeto. Coloque o arquivo de especificações (<code>PROJETO.md</code>) dentro dela. Abra a pasta na IDE ou terminal.</p>
+                    <span class="tag tag-green">5 min</span>
+                </div>
+                <div class="timeline-step" data-step="2">
+                    <h4>Injetar Contexto</h4>
+                    <p>Use o <strong>Prompt 3</strong> (acima) para que o agente leia e entenda o documento completo ANTES de começar a codar.</p>
+                    <span class="tag tag-blue">Obrigatório</span>
+                </div>
+                <div class="timeline-step" data-step="3">
+                    <h4>Aprendizado Ativo</h4>
+                    <p>O agente explica a arquitetura. <strong>Você aprende enquanto o projeto é construído.</strong> Faça perguntas. Entenda cada decisão.</p>
+                    <span class="tag tag-purple">Fase de aprendizado</span>
+                </div>
+                <div class="timeline-step" data-step="4">
+                    <h4>Construção Assistida</h4>
+                    <p>O agente gera: estrutura de pastas, arquivos de configuração, lógica principal, instala dependências e executa testes. Tudo sob sua supervisão.</p>
+                    <span class="tag tag-green">Automatizado</span>
+                </div>
+                <div class="timeline-step" data-step="5">
+                    <h4>Arquivo de Contexto Persistente</h4>
+                    <p>Crie um <code>CLAUDE.md</code> na raiz do projeto (use o <strong>Prompt 5</strong>). Isso garante que a IA nunca perca o contexto entre sessões.</p>
+                    <span class="tag tag-red">Crítico</span>
+                </div>
+            </div>
+
+            <h3>Ferramentas do Agente</h3>
+            <p>O agente tem acesso a ferramentas poderosas que eliminam o "copia-e-cola":</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <h4><code>ReadFile</code></h4>
+                    <p>Lê qualquer arquivo do projeto para entender o contexto.</p>
+                </div>
+                <div class="card">
+                    <h4><code>WriteFile</code></h4>
+                    <p>Cria ou edita arquivos diretamente, sem você precisar copiar nada.</p>
+                </div>
+                <div class="card">
+                    <h4><code>Shell</code></h4>
+                    <p>Executa comandos no terminal: instalar pacotes, rodar testes, iniciar servidores.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ FASE 3 ═══════════ -->
+<section id="fase3">
+    <div class="container">
+        <div class="fade-in">
+            <div class="phase-header">
+                <div class="phase-number">3</div>
+                <div>
+                    <span class="section-label">Phase 3</span>
+                    <h2 style="margin-bottom:0;">Alternatives: Gemini Canvas e Mais</h2>
+                </div>
+            </div>
+
+            <p>Além do Claude Code, existem alternativas visuais como o <strong>Gemini Canvas</strong> e outras ferramentas que podem complementar seu workflow.</p>
+
+            <div class="accordion">
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h4>Apps Web e Dashboards</h4>
+                        <span class="accordion-arrow">&#9660;</span>
+                    </div>
+                    <div class="accordion-body">
+                        <p>O Canvas gera protótipos funcionais de interfaces HTML/React instantaneamente. Descreva o que quer e veja a prévia no painel lateral. Ideal para validar ideias rapidamente.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h4>Depuração Conversacional</h4>
+                        <span class="accordion-arrow">&#9660;</span>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Se o código gerado tiver bugs, você pode debugar diretamente na interface do Canvas: clique no trecho, peça explicação e correção instantânea. Sem reescrever prompts.</p>
+                    </div>
+                </div>
+                <div class="accordion-item">
+                    <div class="accordion-header" onclick="toggleAccordion(this)">
+                        <h4>Transformação de Conteúdo</h4>
+                        <span class="accordion-arrow">&#9660;</span>
+                    </div>
+                    <div class="accordion-body">
+                        <p>Transforme o relatório de pesquisa em: página web (HTML), slides, ou resumo em áudio. Perfeito para apresentar o projeto a clientes ou parceiros.</p>
+                    </div>
+                </div>
+            </div>
+
+            <h3>Panorama das Ferramentas de IA para Código</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Ferramenta</th>
+                            <th>Ponto Forte</th>
+                            <th>Melhor Para</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr style="background:rgba(200,112,74,.06);">
+                            <td><strong style="color:var(--accent);">Claude Code</strong></td>
+                            <td>Agente terminal completo, raciocínio profundo, leitura/escrita de arquivos, CLAUDE.md persistente</td>
+                            <td>Ferramenta principal — projetos completos do zero ao deploy</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Gemini Code Assist</strong></td>
+                            <td>Contexto de 1M tokens + Google Cloud</td>
+                            <td>Projetos complexos de larga escala</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Windsurf Editor</strong></td>
+                            <td>Agente "Cascade" que antecipa bugs</td>
+                            <td>Alta produtividade e "vibe coding"</td>
+                        </tr>
+                        <tr>
+                            <td><strong>GitHub Copilot</strong></td>
+                            <td>Integração nativa com GitHub</td>
+                            <td>Equipes com workflows DevOps</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Aider</strong></td>
+                            <td>Terminal, focado em power users</td>
+                            <td>Edições rápidas via CLI</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ APIs ═══════════ -->
+<section id="apis">
+    <div class="container">
+        <div class="fade-in">
+            <span class="section-label">Arsenal</span>
+            <h2>Essential APIs for 2025-2026</h2>
+            <p>Você não precisa saber implementar um algoritmo de visão computacional. Você precisa saber que a API <em>existe</em> e pedir para a IA integrá-la.</p>
+
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Categoria</th>
+                            <th>API Recomendada</th>
+                            <th>Utilidade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><span class="tag tag-blue">Linguagem</span></td>
+                            <td>OpenAI GPT-4o / Gemini 2.5 Pro</td>
+                            <td>Raciocínio, texto, chatbots</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-purple">Visão</span></td>
+                            <td>Google Cloud Vision / Clarifai</td>
+                            <td>OCR e análise de imagens</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-red">Áudio</span></td>
+                            <td>ElevenLabs / AssemblyAI</td>
+                            <td>Vozes realistas, transcrição</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-green">Dados</span></td>
+                            <td>Dumpling AI / Apify</td>
+                            <td>Web scraping, extração de dados</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-purple">Imagens</span></td>
+                            <td>Stability AI / Midjourney API</td>
+                            <td>Ativos visuais e designs</td>
+                        </tr>
+                        <tr>
+                            <td><span class="tag tag-blue">Backend</span></td>
+                            <td>ExpressJS / FastAPI</td>
+                            <td>Servidores leves para conectar APIs</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="tip-box">
+                <strong>Estratégia inteligente:</strong> No prompt de pesquisa profunda, peça para a IA analisar essas opções e decidir a melhor combinação para CADA função do seu software. O relatório deve conter uma matriz de decisão comparando custo, latência e facilidade.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ SEGURANÇA ═══════════ -->
+<section id="seguranca">
+    <div class="container">
+        <div class="fade-in">
+            <span class="section-label">Proteção</span>
+            <h2>Security: Protegendo Seu Software</h2>
+            <p>Security não é opcional. Todo software que vai para produção precisa considerar esses fundamentos desde o início.</p>
+
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Authentication</h4>
+                    <p>Use <strong>JWT</strong> (JSON Web Tokens) para APIs stateless, <strong>OAuth 2.0</strong> para login social (Google, GitHub), e <strong>bcrypt</strong> para hash de senhas. Nunca armazene senhas em texto puro.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>HTTPS / SSL</h4>
+                    <p>Todo tráfego deve ser criptografado. Use <strong>Let's Encrypt</strong> para certificados gratuitos. Plataformas como Vercel e Railway já incluem SSL automático.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Variáveis de Ambiente (.env)</h4>
+                    <p>Chaves de API, secrets e credenciais vão no <code>.env</code>, NUNCA no código. Adicione <code>.env</code> ao <code>.gitignore</code>. Use <code>.env.example</code> como template.</p>
+                </div>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Rate Limiting</h4>
+                    <p>Limite requisições por IP/usuário para evitar abuso. Use <code>express-rate-limit</code> (Node) ou middlewares equivalentes. Proteja especialmente endpoints de autenticação.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Validação de Input</h4>
+                    <p>Sanitize TODA entrada do usuário. Previna <strong>XSS</strong> (Cross-Site Scripting) com escape de HTML, e <strong>SQL Injection</strong> com queries parametrizadas ou ORMs como Prisma/Drizzle.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>LGPD / Compliance</h4>
+                    <p>Se coleta dados de usuários brasileiros: tenha política de privacidade, permita exclusão de dados, obtenha consentimento explícito. Use cookies apenas com opt-in.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Dica para o Claude Code:</strong> Ao iniciar um projeto, peça: <em>"Implemente autenticação JWT com bcrypt, variáveis de ambiente via .env, rate limiting nos endpoints públicos e validação de input com zod/joi."</em> O agente configurará tudo automaticamente.
+            </div>
+
+            <div class="prompt-box">
+                <pre>Analise o projeto atual e implemente as seguintes medidas de segurança:
+
+1. Authentication JWT com refresh tokens
+2. Hash de senhas com bcrypt (salt rounds: 12)
+3. Middleware de rate limiting (100 req/15min por IP)
+4. Validação de input com Zod em todas as rotas
+5. Sanitização de HTML para prevenir XSS
+6. Queries parametrizadas (nunca concatenar SQL)
+7. Helmet.js para headers de segurança HTTP
+8. CORS configurado apenas para domínios permitidos
+9. Arquivo .env.example com todas as variáveis necessárias
+10. Middleware de logging para auditoria
+
+Explique cada medida implementada.</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <div class="warn-box">
+                <strong>Nunca faça deploy sem:</strong> HTTPS ativo, senhas hasheadas, .env fora do repositório, validação de input em todas as rotas, e rate limiting nos endpoints públicos.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ DEPLOY ═══════════ -->
+<section id="deploy">
+    <div class="container">
+        <div class="fade-in">
+            <span class="section-label">Produção</span>
+            <h2>Deploy: Do Local para o Mundo</h2>
+            <p>Seu software funciona local. Agora é hora de colocar no ar para usuários reais acessarem.</p>
+
+            <h3>Opções de Deploy</h3>
+            <div class="table-wrap">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Plataforma</th>
+                            <th>Melhor Para</th>
+                            <th>Custo</th>
+                            <th>Dificuldade</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Vercel</strong></td>
+                            <td>Frontend, Next.js, sites estáticos</td>
+                            <td><span class="tag tag-green">Grátis (hobby)</span></td>
+                            <td><span class="tag tag-green">Fácil</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>Railway</strong></td>
+                            <td>Backend, bancos de dados, full-stack</td>
+                            <td><span class="tag tag-blue">$5/mês+</span></td>
+                            <td><span class="tag tag-green">Fácil</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>AWS (EC2/ECS)</strong></td>
+                            <td>Projetos de escala, controle total</td>
+                            <td><span class="tag tag-purple">Variável</span></td>
+                            <td><span class="tag tag-red">Avançado</span></td>
+                        </tr>
+                        <tr>
+                            <td><strong>VPS (Hetzner/DigitalOcean)</strong></td>
+                            <td>Controle total, custo previsível</td>
+                            <td><span class="tag tag-blue">$4-20/mês</span></td>
+                            <td><span class="tag tag-purple">Médio</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h3>Docker Básico</h3>
+            <p>Docker empacota seu app com todas as dependências, garantindo que funcione igual em qualquer lugar.</p>
+
+            <div class="prompt-box">
+                <pre># Dockerfile básico para Node.js
+FROM node:20-alpine
+WORKDIR /app
+COPY package*.json ./
+RUN npm ci --only=production
+COPY . .
+EXPOSE 3000
+CMD ["node", "dist/index.js"]
+
+# Comandos essenciais:
+# docker build -t meu-app .
+# docker run -p 3000:3000 meu-app</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <h3>CI/CD com GitHub Actions</h3>
+            <p>Automatize testes e deploy a cada push. O código vai para produção automaticamente quando os testes passam.</p>
+
+            <div class="prompt-box">
+                <pre># .github/workflows/deploy.yml
+name: Deploy
+on:
+  push:
+    branches: [main]
+
+jobs:
+  test-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+      - run: npm ci
+      - run: npm test
+      - run: npm run build
+      # Adicione o step de deploy da sua plataforma aqui</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copy</button>
+            </div>
+
+            <div class="card-grid">
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Domínio + SSL</h4>
+                    <p>Registre um domínio (Namecheap, Cloudflare). Aponte o DNS para sua plataforma de deploy. SSL é automático na maioria das plataformas modernas.</p>
+                </div>
+                <div class="card">
+                    <span class="card-icon">❯</span>
+                    <h4>Monitoramento</h4>
+                    <p>Use <strong>UptimeRobot</strong> (grátis) para alertas de downtime. <strong>Sentry</strong> para tracking de erros. <strong>Vercel Analytics</strong> ou <strong>Plausible</strong> para métricas de uso.</p>
+                </div>
+            </div>
+
+            <div class="tip-box">
+                <strong>Dica para o Claude Code:</strong> Peça: <em>"Configure Docker com multi-stage build, GitHub Actions para CI/CD com testes e deploy automático no Railway/Vercel, e adicione health check endpoint."</em>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ WORKFLOW FINAL ═══════════ -->
+<section id="workflow">
+    <div class="container">
+        <div class="fade-in">
+            <span class="section-label">Complete Workflow</span>
+            <h2>From Concept to Final Product</h2>
+            <p>O fluxo completo em uma visão única:</p>
+
+            <div class="timeline">
+                <div class="timeline-step" data-step="1">
+                    <h4>Ter a Ideia Clara</h4>
+                    <p>Defina o problema, o público, o fluxo do usuário, os dados envolvidos. Não precisa ser técnico &mdash; precisa ser <em>preciso</em>.</p>
+                </div>
+                <div class="timeline-step" data-step="2">
+                    <h4>Pesquisa Profunda (15-30 min)</h4>
+                    <p>Use o <strong>Prompt 1</strong> no Gemini Deep Research ou Claude. Gere o Documento Mestre de 15-25 páginas. Baixe em <code>.md</code>.</p>
+                </div>
+                <div class="timeline-step" data-step="3">
+                    <h4>Refinar o Documento</h4>
+                    <p>Se necessário, use o <strong>Prompt 2</strong> para ajustar o plano ANTES de confirmar. Adicione competidores, requisitos de segurança, etc.</p>
+                </div>
+                <div class="timeline-step" data-step="4">
+                    <h4>Injetar no Agente de Código</h4>
+                    <p>Coloque o <code>PROJETO.md</code> na pasta do projeto. Use o <strong>Prompt 3</strong> para o agente entender tudo. Depois, <strong>Prompt 4</strong> para começar a construir.</p>
+                </div>
+                <div class="timeline-step" data-step="5">
+                    <h4>Construir e Aprender</h4>
+                    <p>O agente gera código, instala dependências, executa testes. Você supervisiona, aprende e faz perguntas.</p>
+                </div>
+                <div class="timeline-step" data-step="6">
+                    <h4>Depurar e Iterar</h4>
+                    <p>Use o <strong>Prompt 6</strong> para debug. Use o Canvas ou o agente para corrigir. Mantenha o <code>CLAUDE.md</code> atualizado.</p>
+                </div>
+                <div class="timeline-step" data-step="7">
+                    <h4>Documentar e Apresentar</h4>
+                    <p>Use o <strong>Prompt 7</strong> para transformar o documento em página web profissional. Ou use MkDocs/Docusaurus para documentação navegável.</p>
+                </div>
+            </div>
+
+            <h3>Opções de Apresentação Final</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>PDFMaker</h4>
+                    <p>Cole o Markdown e aplique temas profissionais com tipografia e destaque de sintaxe.</p>
+                </div>
+                <div class="card">
+                    <h4>Tailwind CSS</h4>
+                    <p>Peça ao agente para converter o relatório em uma página web moderna (como esta!).</p>
+                </div>
+                <div class="card">
+                    <h4>MkDocs / Docusaurus</h4>
+                    <p>Transforme as 25 páginas em um portal de documentação navegável com pesquisa interna e modo escuro.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ CHECKLIST ═══════════ -->
+<section id="checklist">
+    <div class="container">
+        <div class="fade-in">
+            <span class="section-label">Verification</span>
+            <h2>Final Checklist</h2>
+            <p>Clique em cada item conforme você conclui. Seu progresso é salvo localmente.</p>
+
+            <ul class="checklist" id="checklist-list">
+                <li onclick="toggleCheck(this)" data-key="c1">Defini a ideia do projeto com clareza (problema, público, fluxo)</li>
+                <li onclick="toggleCheck(this)" data-key="c2">Escolhi a ferramenta adequada (Claude Code Max, Gemini Advanced, etc.)</li>
+                <li onclick="toggleCheck(this)" data-key="c3">Escrevi o prompt de pesquisa profunda com persona + intenção total</li>
+                <li onclick="toggleCheck(this)" data-key="c4">Refinei o plano de pesquisa antes de confirmar</li>
+                <li onclick="toggleCheck(this)" data-key="c5">Gerei o Documento Mestre (15-25 páginas) e baixei em .md</li>
+                <li onclick="toggleCheck(this)" data-key="c6">Criei a pasta do projeto e coloquei o PROJETO.md dentro</li>
+                <li onclick="toggleCheck(this)" data-key="c7">Injetei o contexto no agente de código (Prompt 3)</li>
+                <li onclick="toggleCheck(this)" data-key="c8">Entendi a arquitetura explicada pelo agente antes de codar</li>
+                <li onclick="toggleCheck(this)" data-key="c9">Iniciei a construção assistida (Prompt 4)</li>
+                <li onclick="toggleCheck(this)" data-key="c10">Criei o arquivo de contexto persistente (CLAUDE.md)</li>
+                <li onclick="toggleCheck(this)" data-key="c11">Depurei erros usando o Prompt 6 ou Canvas</li>
+                <li onclick="toggleCheck(this)" data-key="c12">Projeto funcional e testado</li>
+                <li onclick="toggleCheck(this)" data-key="c13">Documentação final gerada (HTML/PDF/MkDocs)</li>
+            </ul>
+
+            <div class="divider"></div>
+
+            <h3>Regras de Ouro da Prompt Engineering</h3>
+            <div class="card-grid">
+                <div class="card">
+                    <h4>1. Defina uma Persona</h4>
+                    <p>"Você é um Engenheiro Sênior e Especialista em Arquitetura de Nuvem..."</p>
+                </div>
+                <div class="card">
+                    <h4>2. Exija Formato</h4>
+                    <p>Cabeçalhos Markdown, tabelas comparativas, blocos de código. Nunca aceite texto solto.</p>
+                </div>
+                <div class="card">
+                    <h4>3. Itere Antes de Confirmar</h4>
+                    <p>Se o plano de pesquisa parece incompleto, edite-o. Adicione nomes, critérios, restrições.</p>
+                </div>
+                <div class="card">
+                    <h4>4. Seja Específico</h4>
+                    <p>Não diga "faça um app". Diga exatamente o que entra, o que sai, quem usa e por quê.</p>
+                </div>
+            </div>
+
+            <div class="divider"></div>
+
+            <div class="tip-box" style="text-align:center;">
+                <strong>A barreira técnica foi substituída pela barreira da clareza.</strong><br>
+                Quem domina a arte de descrever workflows de ponta a ponta e utiliza ferramentas de contexto gigante produz em dias o que antes levava meses.
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ═══════════ EM BREVE ═══════════ -->
+<section id="embreve" style="padding:5rem 0;background:linear-gradient(180deg, var(--bg) 0%, #050510 30%, #050510 70%, var(--bg) 100%);position:relative;overflow:hidden;">
+    <div style="position:absolute;inset:0;background:radial-gradient(ellipse 800px 400px at 50% 50%, rgba(200,112,74,.05) 0%, transparent 100%);pointer-events:none;"></div>
+    <div class="container" style="position:relative;z-index:1;">
+        <div class="fade-in" style="text-align:center;">
+            <span class="section-label" style="border-color:var(--accent2);color:var(--accent2);">Em Breve</span>
+            <h2 style="font-size:clamp(2rem,5vw,3.2rem);margin-bottom:.5rem;">Curso Completo Extensivo</h2>
+            <p style="color:rgba(255,255,255,.4);font-size:1.1rem;max-width:650px;margin:0 auto 2.5rem;">Tudo que este guia cobre — e muito mais — em um curso completo, com projetos práticos e comunidade.</p>
+
+            <!-- Countdown -->
+            <div id="countdown" style="display:flex;justify-content:center;gap:1.5rem;margin-bottom:3rem;flex-wrap:wrap;">
+                <div style="text-align:center;">
+                    <div id="cd-days" style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">00</div>
+                    <div style="font-size:.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:.3rem;">Dias</div>
+                </div>
+                <div style="text-align:center;">
+                    <div id="cd-hours" style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">00</div>
+                    <div style="font-size:.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:.3rem;">Horas</div>
+                </div>
+                <div style="text-align:center;">
+                    <div id="cd-min" style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">00</div>
+                    <div style="font-size:.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:.3rem;">Minutos</div>
+                </div>
+                <div style="text-align:center;">
+                    <div id="cd-sec" style="font-size:clamp(2.5rem,5vw,3.5rem);font-weight:800;background:var(--gradient);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text;line-height:1;">00</div>
+                    <div style="font-size:.75rem;color:var(--text-muted);letter-spacing:2px;text-transform:uppercase;margin-top:.3rem;">Segundos</div>
+                </div>
+            </div>
+
+            <h3 style="color:#fff;margin-bottom:1.5rem;font-size:1.2rem;">O que o curso completo vai cobrir:</h3>
+
+            <div class="card-grid" style="text-align:left;max-width:750px;margin:0 auto 2.5rem;">
+                <div class="card">
+                    <h4>Foundations Sólidos</h4>
+                    <p>Git, terminal, HTTP, REST, bancos de dados — a base que todo dev precisa, explicada com projetos reais.</p>
+                </div>
+                <div class="card">
+                    <h4>Claude Code Avançado</h4>
+                    <p>CLAUDE.md, hooks, multi-repo, agentes headless, integração com CI/CD e automações complexas.</p>
+                </div>
+                <div class="card">
+                    <h4>Full-Stack com IA</h4>
+                    <p>React/Next.js + Node/FastAPI + PostgreSQL — construindo 3 projetos completos do zero ao deploy.</p>
+                </div>
+                <div class="card">
+                    <h4>DevOps e Infrastructure</h4>
+                    <p>Docker, Kubernetes básico, GitHub Actions, monitoramento, logging e observabilidade.</p>
+                </div>
+                <div class="card">
+                    <h4>Security Profissional</h4>
+                    <p>OWASP Top 10, pentest básico, autenticação avançada, criptografia e compliance (LGPD/GDPR).</p>
+                </div>
+                <div class="card">
+                    <h4>Monetização e Lançamento</h4>
+                    <p>Stripe, landing pages, SEO técnico, analytics e estratégias para lançar seu SaaS ou produto.</p>
+                </div>
+            </div>
+
+            <div style="margin-top:2rem;">
+                <p style="color:rgba(255,255,255,.5);font-size:1.05rem;margin-bottom:.8rem;">Siga para não perder o lançamento:</p>
+                <a href="https://instagram.com/claudecodebr" target="_blank" rel="noopener" style="display:inline-block;padding:.8rem 2.2rem;background:var(--gradient);color:#fff;font-weight:700;font-size:.95rem;border-radius:50px;text-decoration:none;letter-spacing:1px;transition:all .3s;box-shadow:0 0 25px rgba(200,112,74,.2);">@claudecodebr no Instagram</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p><strong>Claude Code BR</strong> — Curso gratuito &bull; 2026</p>
+</footer>
+
+<!-- Scroll to Top -->
+<button class="scroll-top" id="scrollTop" onclick="elevatorRide()">&#8593;</button>
+
+<script>
+    // ── Nav Panel Toggle ──
+    let navOpen = false;
+    function toggleNav() {
+        navOpen = !navOpen;
+        document.getElementById('navPanel').classList.toggle('open', navOpen);
+        document.getElementById('navToggle').classList.toggle('open', navOpen);
+        document.getElementById('navDotsMini').classList.toggle('hidden', navOpen);
+    }
+
+    function navTo(id) {
+        const el = document.getElementById(id);
+        if (el) el.scrollIntoView({ behavior: 'smooth' });
+        // Close panel on mobile
+        if (window.innerWidth < 768) {
+            navOpen = false;
+            document.getElementById('navPanel').classList.remove('open');
+            document.getElementById('navToggle').classList.remove('open');
+            document.getElementById('navDotsMini').classList.remove('hidden');
+        }
+    }
+
+    // ── Copy Prompt ──
+    function copyPrompt(btn) {
+        const pre = btn.parentElement.querySelector('pre');
+        navigator.clipboard.writeText(pre.textContent).then(() => {
+            btn.textContent = 'Copied!';
+            btn.classList.add('copied');
+            setTimeout(() => {
+                btn.textContent = 'Copy';
+                btn.classList.remove('copied');
+            }, 2000);
+        });
+    }
+
+    // ── Accordion ──
+    function toggleAccordion(header) {
+        const item = header.parentElement;
+        item.classList.toggle('open');
+    }
+
+    // ── Checklist with localStorage ──
+    function toggleCheck(li) {
+        li.classList.toggle('checked');
+        const key = li.dataset.key;
+        if (li.classList.contains('checked')) {
+            localStorage.setItem(key, '1');
+        } else {
+            localStorage.removeItem(key);
+        }
+    }
+
+    // Restore checklist
+    document.querySelectorAll('.checklist li').forEach(li => {
+        if (localStorage.getItem(li.dataset.key)) {
+            li.classList.add('checked');
+        }
+    });
+
+    // ── Progress Bar ──
+    window.addEventListener('scroll', () => {
+        const scrollTop = window.scrollY;
+        const docHeight = document.documentElement.scrollHeight - window.innerHeight;
+        const progress = (scrollTop / docHeight) * 100;
+        document.getElementById('progressBar').style.width = progress + '%';
+
+        // Scroll to top button
+        const stBtn = document.getElementById('scrollTop');
+        if (scrollTop > 500) {
+            stBtn.classList.add('show');
+        } else {
+            stBtn.classList.remove('show');
+        }
+    });
+
+    // ── Active section tracking ──
+    const sections = ['hero','filosofia','infra','fase1','prompts','fase2','fase3','apis','seguranca','deploy','workflow','checklist','embreve'];
+
+    window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(id => {
+            const el = document.getElementById(id);
+            if (el && window.scrollY >= el.offsetTop - 300) {
+                current = id;
+            }
+        });
+
+        // Update nav panel items
+        document.querySelectorAll('.nav-item').forEach(item => {
+            item.classList.toggle('active', item.dataset.target === current);
+        });
+
+        // Update mini dots
+        document.querySelectorAll('.nav-mini-dot').forEach(dot => {
+            dot.classList.toggle('active', dot.dataset.target === current);
+        });
+    });
+
+    // Mini dots click
+    document.querySelectorAll('.nav-mini-dot').forEach(dot => {
+        dot.addEventListener('click', () => {
+            const target = document.getElementById(dot.dataset.target);
+            if (target) target.scrollIntoView({ behavior: 'smooth' });
+        });
+    });
+
+    // ── Fade-in on scroll ──
+    const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+            }
+        });
+    }, { threshold: 0.1 });
+
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+    // ── Elevator Ride: música real + ding + scroll lento ──
+    let elevatorPlaying = false;
+    let elevatorAudio = null;
+
+    // Preload the elevator music
+    (function preloadElevatorMusic() {
+        elevatorAudio = new Audio('https://archive.org/download/elevator-music-bossa-nova-background-music-version-60s/elevator-music-bossa-nova-background-music-version-60s-10900%20%281%29.mp3');
+        elevatorAudio.volume = 0.35;
+        elevatorAudio.preload = 'auto';
+    })();
+
+    // Elevator ding sound via Web Audio API
+    function playDing() {
+        const ctx = new (window.AudioContext || window.webkitAudioContext)();
+        const t = ctx.currentTime;
+
+        // First tone (higher)
+        const osc1 = ctx.createOscillator();
+        const g1 = ctx.createGain();
+        osc1.type = 'sine';
+        osc1.frequency.value = 1046.50; // C6
+        g1.gain.setValueAtTime(0, t);
+        g1.gain.linearRampToValueAtTime(0.4, t + 0.01);
+        g1.gain.exponentialRampToValueAtTime(0.001, t + 1.2);
+        osc1.connect(g1);
+        g1.connect(ctx.destination);
+        osc1.start(t);
+        osc1.stop(t + 1.3);
+
+        // Second tone (harmonic, slightly delayed)
+        const osc2 = ctx.createOscillator();
+        const g2 = ctx.createGain();
+        osc2.type = 'sine';
+        osc2.frequency.value = 1318.51; // E6
+        g2.gain.setValueAtTime(0, t + 0.08);
+        g2.gain.linearRampToValueAtTime(0.25, t + 0.1);
+        g2.gain.exponentialRampToValueAtTime(0.001, t + 1.5);
+        osc2.connect(g2);
+        g2.connect(ctx.destination);
+        osc2.start(t + 0.08);
+        osc2.stop(t + 1.6);
+
+        setTimeout(() => ctx.close(), 2500);
+    }
+
+    function elevatorRide() {
+        if (elevatorPlaying || window.scrollY === 0) return;
+        elevatorPlaying = true;
+
+        // Start music from the beginning
+        elevatorAudio.currentTime = 0;
+        elevatorAudio.volume = 0.35;
+        elevatorAudio.play().catch(() => {});
+
+        // ── Slow scroll up ──
+        const startY = window.scrollY;
+        // Slower: ~6px per frame at 60fps feels like a calm elevator
+        const duration = Math.max(6000, startY * 3.5);
+        const startTime = performance.now();
+
+        function easeInOutSine(t) {
+            return -(Math.cos(Math.PI * t) - 1) / 2;
+        }
+
+        function scrollStep(now) {
+            const elapsed = now - startTime;
+            const progress = Math.min(elapsed / duration, 1);
+            const eased = easeInOutSine(progress);
+            window.scrollTo(0, startY * (1 - eased));
+
+            if (progress < 1) {
+                requestAnimationFrame(scrollStep);
+            } else {
+                window.scrollTo(0, 0);
+
+                // Fade out music
+                const fadeOut = setInterval(() => {
+                    if (elevatorAudio.volume > 0.02) {
+                        elevatorAudio.volume = Math.max(0, elevatorAudio.volume - 0.02);
+                    } else {
+                        clearInterval(fadeOut);
+                        elevatorAudio.pause();
+                        elevatorAudio.volume = 0.35;
+                    }
+                }, 50);
+
+                // Play the DING!
+                playDing();
+
+                elevatorPlaying = false;
+            }
+        }
+
+        requestAnimationFrame(scrollStep);
+    }
+
+    // ── Countdown Timer ──
+    (function startCountdown() {
+        const target = new Date('2026-04-28T00:00:00').getTime();
+        function update() {
+            const now = Date.now();
+            const diff = Math.max(0, target - now);
+            const d = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const h = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const s = Math.floor((diff % (1000 * 60)) / 1000);
+            document.getElementById('cd-days').textContent = String(d).padStart(2, '0');
+            document.getElementById('cd-hours').textContent = String(h).padStart(2, '0');
+            document.getElementById('cd-min').textContent = String(m).padStart(2, '0');
+            document.getElementById('cd-sec').textContent = String(s).padStart(2, '0');
+        }
+        update();
+        setInterval(update, 1000);
+    })();
+</script>
+
+</body>
+</html>
