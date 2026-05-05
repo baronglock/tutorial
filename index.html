@@ -1115,7 +1115,32 @@ Depois de me explicar, aguarde minha confirmação antes de começar a gerar có
             </div>
 
             <!-- PROMPT 4 -->
-            <h3>Prompt 4 &mdash; Iniciar a Construção Assistida</h3>
+            <h3>Prompt 4 &mdash; Quebrar o Plano em Sprints (com Aprofundamento Teórico e Prático)</h3>
+            <div class="prompt-box">
+                <pre>Antes de começar a codar, vamos planejar em SPRINTS incrementais.
+
+Pegue o PROJETO.md e quebre a implementação em sprints de 3 a 7 dias cada, na ordem em que devem ser executados. Para CADA sprint, gere:
+
+1. **Objetivo do sprint** — qual entrega de valor CONCRETA e demonstrável sai desse sprint (uma feature funcionando, um endpoint vivo, um fluxo testável).
+2. **Aprofundamento teórico** — quais conceitos eu preciso entender ANTES de codar. Para cada conceito, escreva 1-2 parágrafos explicando no nível de quem nunca viu o assunto, com analogias do mundo real.
+3. **Aprofundamento por código** — exemplo MÍNIMO funcional do conceito-chave do sprint. Snippet rodável de verdade, não pseudocódigo. Comente cada linha não-óbvia.
+4. **Tarefas técnicas** — lista numerada do que vai ser construído, em ordem de dependência. Cada tarefa é uma unidade pequena (1-3 horas).
+5. **Critério de Done** — checklist verificável: testes que devem passar, comportamento que deve funcionar, output esperado. Sem ambiguidade.
+6. **Riscos / pegadinhas** — o que costuma dar errado nessa etapa específica e como evitar (ex: race conditions, limites de API, edge cases).
+7. **Próximo passo** — o que vem depois e por que ESTE sprint precisa estar pronto antes.
+
+Salve o resultado em SPRINTS.md na raiz do projeto. NÃO comece a codar ainda — quero revisar o plano sprint a sprint, ajustar o que fizer sentido, e depois executar um por vez.
+
+Ao executar cada sprint, atualize SPRINTS.md marcando o sprint como concluído e registre quaisquer aprendizados ou desvios do plano original.</pre>
+                <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
+            </div>
+
+            <div class="tip-box" style="margin-top:1rem;">
+                <strong>Por que essa técnica vira o jogo:</strong> sem ela, o agente tende a sair codando tudo de uma vez e perde o fio em projetos médios/grandes. Quebrar em sprints força <em>raciocínio explícito</em> antes da execução, te dá pontos de revisão (você pode redirecionar antes de queimar tokens), e cria um registro vivo do projeto em SPRINTS.md que serve de mapa pra qualquer nova sessão. Use isso especialmente em projetos B2B onde cada entrega é uma reunião de stakeholder.
+            </div>
+
+            <!-- PROMPT 5 -->
+            <h3>Prompt 5 &mdash; Iniciar a Construção Assistida</h3>
             <div class="prompt-box">
                 <pre>Ótimo, entendi a arquitetura. Agora vamos começar a construir.
 
@@ -1133,8 +1158,8 @@ Regras:
                 <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
             </div>
 
-            <!-- PROMPT 5 -->
-            <h3>Prompt 5 &mdash; Criar Arquivo de Contexto Persistente (CLAUDE.md)</h3>
+            <!-- PROMPT 6 -->
+            <h3>Prompt 6 &mdash; Criar Arquivo de Contexto Persistente (CLAUDE.md)</h3>
             <div class="prompt-box">
                 <pre>Crie um arquivo chamado CLAUDE.md na raiz do projeto com as seguintes informações para manter consistência entre sessões:
 
@@ -1167,8 +1192,8 @@ Regras:
                 <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
             </div>
 
-            <!-- PROMPT 6 -->
-            <h3>Prompt 6 &mdash; Depuração / Debug</h3>
+            <!-- PROMPT 7 -->
+            <h3>Prompt 7 &mdash; Depuração / Debug</h3>
             <div class="prompt-box">
                 <pre>O seguinte erro apareceu ao executar [comando]:
 
@@ -1185,8 +1210,8 @@ Analise o erro, explique a causa raiz em linguagem simples, e corrija o código.
                 <button class="copy-btn" onclick="copyPrompt(this)">Copiar</button>
             </div>
 
-            <!-- PROMPT 7 -->
-            <h3>Prompt 7 &mdash; Transformar Documento em Página Web</h3>
+            <!-- PROMPT 8 -->
+            <h3>Prompt 8 &mdash; Transformar Documento em Página Web</h3>
             <div class="prompt-box">
                 <pre>Converta o conteúdo do arquivo PROJETO.md em uma página web moderna e profissional usando HTML + Tailwind CSS.
 
@@ -1247,7 +1272,7 @@ Requisitos:
                 </div>
                 <div class="timeline-step" data-step="5">
                     <h4>Arquivo de Contexto Persistente</h4>
-                    <p>Crie um <code>CLAUDE.md</code> na raiz do projeto (use o <strong>Prompt 5</strong>). Isso garante que a IA nunca perca o contexto entre sessões.</p>
+                    <p>Crie um <code>CLAUDE.md</code> na raiz do projeto (use o <strong>Prompt 6</strong>). Isso garante que a IA nunca perca o contexto entre sessões.</p>
                     <span class="tag tag-red">Crítico</span>
                 </div>
             </div>
@@ -1617,7 +1642,7 @@ jobs:
                 </div>
                 <div class="timeline-step" data-step="4">
                     <h4>Injetar no Agente de Código</h4>
-                    <p>Coloque o <code>PROJETO.md</code> na pasta do projeto. Use o <strong>Prompt 3</strong> para o agente entender tudo. Depois, <strong>Prompt 4</strong> para começar a construir.</p>
+                    <p>Coloque o <code>PROJETO.md</code> na pasta do projeto. Use o <strong>Prompt 3</strong> para o agente entender tudo. Em seguida, <strong>Prompt 4</strong> para quebrar a execução em sprints (com teoria + código por etapa). Depois, <strong>Prompt 5</strong> para iniciar a construção do primeiro sprint.</p>
                 </div>
                 <div class="timeline-step" data-step="5">
                     <h4>Construir e Aprender</h4>
@@ -1625,11 +1650,11 @@ jobs:
                 </div>
                 <div class="timeline-step" data-step="6">
                     <h4>Depurar e Iterar</h4>
-                    <p>Use o <strong>Prompt 6</strong> para debug. Use o Canvas ou o agente para corrigir. Mantenha o <code>CLAUDE.md</code> atualizado.</p>
+                    <p>Use o <strong>Prompt 7</strong> para debug. Use o Canvas ou o agente para corrigir. Mantenha o <code>CLAUDE.md</code> e o <code>SPRINTS.md</code> atualizados.</p>
                 </div>
                 <div class="timeline-step" data-step="7">
                     <h4>Documentar e Apresentar</h4>
-                    <p>Use o <strong>Prompt 7</strong> para transformar o documento em página web profissional. Ou use MkDocs/Docusaurus para documentação navegável.</p>
+                    <p>Use o <strong>Prompt 8</strong> para transformar o documento em página web profissional. Ou use MkDocs/Docusaurus para documentação navegável.</p>
                 </div>
             </div>
 
@@ -1669,9 +1694,9 @@ jobs:
                 <li onclick="toggleCheck(this)" data-key="c6">Criei a pasta do projeto e coloquei o PROJETO.md dentro</li>
                 <li onclick="toggleCheck(this)" data-key="c7">Injetei o contexto no agente de código (Prompt 3)</li>
                 <li onclick="toggleCheck(this)" data-key="c8">Entendi a arquitetura explicada pelo agente antes de codar</li>
-                <li onclick="toggleCheck(this)" data-key="c9">Iniciei a construção assistida (Prompt 4)</li>
+                <li onclick="toggleCheck(this)" data-key="c9">Quebrei o projeto em sprints com teoria e código (Prompt 4) e iniciei a construção assistida (Prompt 5)</li>
                 <li onclick="toggleCheck(this)" data-key="c10">Criei o arquivo de contexto persistente (CLAUDE.md)</li>
-                <li onclick="toggleCheck(this)" data-key="c11">Depurei erros usando o Prompt 6 ou Canvas</li>
+                <li onclick="toggleCheck(this)" data-key="c11">Depurei erros usando o Prompt 7 ou Canvas</li>
                 <li onclick="toggleCheck(this)" data-key="c12">Projeto funcional e testado</li>
                 <li onclick="toggleCheck(this)" data-key="c13">Documentação final gerada (HTML/PDF/MkDocs)</li>
             </ul>
